@@ -1,3 +1,9 @@
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/80fc3cf6-ca60-45ed-bd2e-cbd2ddc9a890" alt="Project Header" style="width: 100%; height: 150px;">
+</p>
+
+
 # COSC 360 Group Project
 
 ## Table of Contents
