@@ -1,0 +1,42 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore logs and cache files
+/log/
+/tmp/
+/cache/
+
+# Ignore configuration files
+/config.php
+
+# Ignore Composer dependencies
+/vendor/
+
+# Ignore Node.js dependencies
+/node_modules/
+
+# Ignore IDE files
+.idea/
+.vscode/
+
+# Ignore compiled assets
+/public/assets/
+
+# Ignore database files
+/database/
+
+# Ignore environment-specific files
+.env
+
+# Ignore backup files
+*.bak
+*.swp
+*.swo
+*.~lock.*
+
+# Ignore session files
+/sessions/
+
+# Ignore user uploads
+/uploads/
