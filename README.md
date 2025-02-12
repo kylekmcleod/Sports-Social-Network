@@ -2,14 +2,18 @@
 
 ## Table of Contents
 1. [Team Members](#team-members)
-2. [Folder Structure](#folder-structure)
-
-### Team Members
+2. [Project Overview](#project-overview)
+3. [Folder Structure](#folder-structure)
+      
+## Team Members
 - Kyle McLeod
 - Harper Kerstens
 - Matin Raoufi
+  
+## Project Overview
+Our web application will be a sports orientated personal blogging platform. It will provide a space for fans to share their opinions on teams and players, and allow general discussions regarding sports.
 
-### Folder Structure:
+## Folder Structure:
 ```
 myapp/
 │
