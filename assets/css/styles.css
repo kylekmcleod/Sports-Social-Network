@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+/* Color Palette Variables */
+:root {
+    /* Primary Red */
+    --primary-red: #e63946;
+    
+    /* Hover Red */
+    --hover-red: #d62828;
+    
+    /* Active Red */
+    --active-red: #9e1b1b;
+    
+    /* Background Red (Light Red for Backgrounds) */
+    --background-red: #f1f5f9;
+    
+    /* Border Red */
+    --border-red: #d7b4b4;
+    
+    /* Dark Red (Text Color) */
+    --text-dark-red: #4a0909;
+    
+    /* Light Red (Accent or Light Text) */
+    --text-light-red: #ffefef;
+}
+
+/* General Body and HTML Styles */
+body, html {
+    font-family: "Outfit", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    background-color: var(--background-red);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Button Styles (Register) */
+.register-btn {
+    background-color: var(--primary-red);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.register-btn:hover {
+    background-color: var(--hover-red);
+    color: white;
+}
+
+.register-btn:active {
+    background-color: var(--active-red);
+    color: white;
+}
+
+.register-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(230, 57, 53, 0.6);
+}
