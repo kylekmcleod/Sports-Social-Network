@@ -1,0 +1,26 @@
+/* auth.css */
+.register-btn {
+    background-color: var(--primary-red);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.register-btn:hover {
+    background-color: var(--hover-red);
+    color: white;
+}
+
+.register-btn:active {
+    background-color: var(--active-red);
+    color: white;
+}
+
+.register-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(230, 57, 53, 0.6);
+}

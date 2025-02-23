@@ -1,0 +1,23 @@
+/* globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+/* Color Palette Variables */
+:root {
+    --primary-red: #e63946;
+    --hover-red: #d62828;
+    --active-red: #9e1b1b;
+    --background-red: #f1f5f9;
+    --border-red: #d7b4b4;
+    --text-dark-red: #4a0909;
+    --text-light-red: #ffefef;
+}
+
+body, html {
+    font-family: "Outfit", sans-serif;
+    background-color: var(--background-red);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
