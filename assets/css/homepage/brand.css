@@ -1,0 +1,42 @@
+.brand {
+  width: 50px;
+  height: auto;
+}
+
+/* Mobile header logo */
+.mobile-header {
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .mobile-header {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 10px;
+    border-bottom: 1px solid #e6ecf0;
+    z-index: 1000;
+  }
+
+  .layout__left-sidebar .brand {
+    display: none;
+  }
+}
+
+/* Desktop sidebar logo */
+.layout__left-sidebar .brand {
+  width: 50px;
+  height: auto;
+  margin: 10px;
+}
+
+/* Ensure logo is visible and properly sized */
+img.brand {
+  width: 50px !important;
+  height: auto !important;
+  min-width: 40px;
+}
