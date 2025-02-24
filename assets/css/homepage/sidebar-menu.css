@@ -15,9 +15,8 @@
 }
 
 .sidebar-menu__item:hover {
-  background: rgba(29, 161, 242, 0.1);
-  color: var(--primary-red);
-  border-radius: 20px;
+  background: rgba(255, 30, 0, 0.075);
+  border-radius: 10px;
   cursor: pointer;
 }
 
