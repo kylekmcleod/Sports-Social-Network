@@ -45,14 +45,17 @@
 }
 
 .who-to-follow__button {
-  border: 1px solid #1da0f2;
-  color: #1da0f2;
+  border: 1px solid var(--primary-red);
+  color: var(--primary-red);
   font-size: 15px;
   font-weight: 700;
   border-radius: 15px;
   padding: 5px;
   min-width: 67px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .who-to-follow__button:hover {
