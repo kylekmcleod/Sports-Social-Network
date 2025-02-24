@@ -1,0 +1,69 @@
+.post-something {
+    padding: 15px;
+    margin-top: 15px;
+    display: flex;
+    align-items: flex-start;
+} 
+
+.post-something__author-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.post-something__content {
+    flex: 1;
+}
+
+.post-something__input {
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    font-family: "Outfit", sans-serif;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    background: transparent;
+    resize: none;
+    min-height: 60px;
+    max-height: 300px;
+    overflow-y: auto;
+    height: auto;
+}
+
+.post-something__input:focus {
+    outline: none;
+}
+
+.post-something__input::placeholder {
+    color: #292929;
+    opacity: 0.6;
+}
+
+.post-something__actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;  /* Space between counter and button */
+}
+
+.post-something__char-count {
+    color: #292929;
+    opacity: 0.6;
+    font-size: 14px;
+}
+
+.post-something__button {
+    background: var(--primary-red);
+    color: var(--text-light-red);
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.post-something__button:hover {
+    background: var(--hover-red);
+} 
