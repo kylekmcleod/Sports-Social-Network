@@ -1,0 +1,49 @@
+.sports-scores {
+    background: white;
+    border-radius: 16px;
+    margin-top: 16px;
+}
+
+.sports-scores__block {
+    padding: 15px;
+    border-bottom: 1px solid #e6ecf0;
+}
+
+.sports-scores__block:last-child {
+    border-bottom: none;
+}
+
+.sports-scores__heading {
+    font-size: 19px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.sports-scores__league {
+    font-size: 13px;
+    color: #536471;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.sports-scores__game {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sports-scores__team {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sports-scores__team-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.sports-scores__team-score {
+    font-size: 14px;
+    font-weight: 700;
+} 

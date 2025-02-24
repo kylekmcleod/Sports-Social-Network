@@ -2,7 +2,7 @@
   display: flex;
   border-bottom: 1px solid #e6ecf0;
   margin-bottom: 2px;
-  padding: 10px 15px;
+  padding: 25px 15px;
 }
 
 .post:hover {
@@ -51,4 +51,38 @@
   width: 100%;
   border-radius: 15px;
   margin-top: 10px;
+}
+
+.post__content {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.post__actions {
+    display: flex;
+    gap: 80px;
+    margin-top: 12px;
+}
+
+.post__action-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #536471;
+    transition: color 0.2s ease;
+    cursor: pointer;
+}
+
+.post__action-button:hover {
+    color: var(--primary-red);
+}
+
+.post__action-icon {
+    width: 18px;
+    height: 18px;
+    opacity: 0.9;
+}
+
+.post__action-count {
+    font-size: 13px;
 }

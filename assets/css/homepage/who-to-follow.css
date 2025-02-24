@@ -25,11 +25,12 @@
 
 .who-to-follow__author-slug {
   color: #657786;
-  font-size: 15px;
+  font-size: 12px;
+  padding-top: 3px;
 }
 
 .who-to-follow__author-name {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
 }
 

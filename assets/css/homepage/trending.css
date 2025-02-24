@@ -1,0 +1,28 @@
+.trending__item-topic {
+    font-size: 12px;
+    color: #536471;
+}
+
+.trending__item-content {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 2px 0;
+}
+
+.trending__item-engagement {
+    font-size: 12px;
+    color: #536471;
+}
+
+.trending__show-more {
+    font-size: 14px;
+    color: var(--primary-red);
+    padding: 15px;
+    cursor: pointer;
+}
+
+.trending__header {
+    font-size: 19px;
+    font-weight: 800;
+    margin-bottom: 10px;
+} 
