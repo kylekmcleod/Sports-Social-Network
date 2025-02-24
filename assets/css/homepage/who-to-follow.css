@@ -1,6 +1,7 @@
 .who-to-follow {
-  background: #ffffff;
-  border-radius: 15px;
+  background: white;
+  border-radius: 16px;
+  border: 2px solid #e6ecf0;
   margin-bottom: 25px;
 }
 
@@ -42,8 +43,8 @@
 
 .who-to-follow__heading {
   font-size: 19px;
-  font-weight: bold;
-  color: #14171a;
+  font-weight: 800;
+  margin-bottom: 5px;
 }
 
 .who-to-follow__button {
