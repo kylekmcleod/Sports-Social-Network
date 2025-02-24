@@ -1,73 +1,3 @@
-.compose-post {
-  display: flex;
-  padding: 10px 15px;
-  border-bottom: 1px solid #e6ecf0;
-  background: white;
-}
-
-.compose-post__author-logo {
-  width: 49px;
-  height: 49px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.compose-post__content {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.compose-post__input {
-  border: none;
-  font-size: 19px;
-  outline: none;
-  width: 100%;
-  padding: 10px 0;
-  resize: none;
-}
-
-.compose-post__input::placeholder {
-  color: #5b7083;
-}
-
-.compose-post__buttons {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.compose-post__button {
-  background: var(--primary-red);
-  border: none;
-  border-radius: 50px;
-  color: white;
-  font-weight: bold;
-  font-size: 15px;
-  padding: 8px 16px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.compose-post__button:hover {
-  background: var(--hover-red);
-}
-
-@media screen and (max-width: 500px) {
-  .compose-post {
-    padding: 10px;
-  }
-  
-  .compose-post__author-logo {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .compose-post__input {
-    font-size: 16px;
-  }
-}
-
 .post {
   display: flex;
   border-bottom: 1px solid #e6ecf0;
@@ -81,7 +11,7 @@
 }
 
 .post a {
-  color: #1b94e0;
+  color: var(--primary-red);
   text-decoration: none;
 }
 
