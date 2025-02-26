@@ -34,7 +34,6 @@ myapp/
 │   ├── models/                  # Files for interacting with the database (e.g., User model)
 │   │   └── User.php             # User model, interacts with the users table in the database
 │   │
-│   │
 │   └── utils/                   # Utility classes (helpers, functions)
 │       └── Database.php         # Database connection and query logic
 │
