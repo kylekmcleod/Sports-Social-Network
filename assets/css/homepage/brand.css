@@ -27,14 +27,12 @@
   }
 }
 
-/* Desktop sidebar logo */
 .layout__left-sidebar .brand {
   width: 50px;
   height: auto;
   margin: 10px;
 }
 
-/* Ensure logo is visible and properly sized */
 img.brand {
   width: 50px !important;
   height: auto !important;
