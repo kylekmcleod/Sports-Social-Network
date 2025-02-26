@@ -21,7 +21,7 @@
   }
   
   .layout__left-sidebar {
-    display: none;  /* Hide left sidebar completely */
+    display: none;
   }
 
   .layout__main {
@@ -78,7 +78,6 @@
   max-width: 100%;
 }
 
-/* Fix for any potential overflow issues */
 .post, 
 .trends-for-you, 
 .who-to-follow {
@@ -86,7 +85,6 @@
   box-sizing: border-box;
 }
 
-/* Fix for body and html */
 body, html {
   margin: 0;
   padding: 0;
@@ -95,13 +93,11 @@ body, html {
   min-height: 100vh;
 }
 
-/* Update layout main styles */
 .layout__main {
     position: relative;
     margin-top: 0;
 }
 
-/* Fixed header container */
 .fixed-header {
     position: fixed;
     top: 0;

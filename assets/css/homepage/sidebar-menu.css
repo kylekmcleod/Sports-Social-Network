@@ -40,7 +40,6 @@
 
 /* Mobile and Tablet Styles */
 @media screen and (max-width: 1200px) {
-  /* Hide desktop sidebar completely */
   .layout__left-sidebar {
     display: none !important;
   }
