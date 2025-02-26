@@ -54,8 +54,9 @@
 }
 
 .post__content {
-  font-size: 15px;
+  font-size: 0.9rem;
   line-height: 1.4;
+  margin: 8px 0;
 }
 
 .post__actions {
