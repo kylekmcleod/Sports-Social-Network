@@ -75,7 +75,7 @@
 }
 
 .post__action-button:hover {
-    color: var(--primary-red);
+  filter: brightness(0) saturate(100%) invert(20%) sepia(92%) saturate(7486%) hue-rotate(354deg) brightness(95%) contrast(108%);
 }
 
 .post__action-icon {
@@ -83,6 +83,7 @@
     height: 18px;
     opacity: 0.9;
 }
+
 
 .post__action-count {
     font-size: 13px;
