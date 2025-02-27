@@ -1,7 +1,6 @@
-/* globals.css */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-/* Color Palette Variables */
+/* COLOR SCHEME (use these variables instead of hardcoding colors in) */
 :root {
     --primary-red: #e63946;
     --hover-red: #d62828;
