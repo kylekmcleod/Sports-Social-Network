@@ -23,9 +23,14 @@ myapp/
 │   └── images/                  # Images (logos, icons, etc.)
 │
 ├── public/                      # Public folder for all publicly accessible files
-│   ├── homepage.php             # Homepage (index page)
-│   ├── register.php             # Register
-│   └── login.php                # Login
+│   ├── homepage.html            # Homepage
+│   ├── register.html            # Register page
+│   ├── login.html               # Login page
+│   ├── admin.html               # Admin panel (TODO)
+│   ├── post.html                # Post page (TODO)
+│   ├── settings.html            # Settings page (TODO)
+│   ├── profile.html             # Profile page (TODO)
+│   ├── 404.html                 # Error 404 page (TODO)
 │
 ├── src/                         # Back-end logic
 │   ├── controllers/             # PHP files for handling requests and logic
@@ -38,13 +43,11 @@ myapp/
 │       └── Database.php         # Database connection
 │
 ├── views/                       # View templates for rendering HTML (can be PHP or HTML)
-│   ├── header.php               # Common header (used in all pages)
-│   ├── footer.php               # Common footer (used in all pages)
-│   └── dashboard.php            # Example: Page for logged-in users
 │
-├── .gitignore                   # Git ignore file (to exclude files like config and cache)
+├── .gitignore                   # Git ignore file
 ├── composer.json                # Composer file (for PHP dependencies management)
-├── config/                      # Configuration files (for DB, email, etc.)
+├── config/                      # Config files
 │   └── config.php               # Database config
+│ 
 └── README.md                    # Project readme file
 ```
