@@ -12,7 +12,7 @@
   margin-top: 25px;
 }
 
-/* Tablet and Mobile styles */
+/* PHONE AND TABLET SCREEN */
 @media screen and (max-width: 1200px) {
   .layout {
     grid-template-columns: auto;
@@ -51,7 +51,6 @@
   }
 }
 
-/* Mobile Navigation */
 .mobile-nav {
   display: none;
   position: fixed;
@@ -65,14 +64,13 @@
   width: 100%;
 }
 
-/* Show mobile nav only on mobile and tablet */
+/* ONLY SHOW MOOBILE NAV ON TABLET AND PHONE */
 @media screen and (max-width: 1200px) {
   .mobile-nav {
     display: block;
   }
 }
 
-/* Mobile header */
 .mobile-header {
   width: 100%;
   max-width: 100%;
