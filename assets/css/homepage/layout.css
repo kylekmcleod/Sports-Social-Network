@@ -4,6 +4,7 @@
   margin: 0 auto;
   max-width: 1200px;
   width: 100%;
+  
 }
 
 .layout__right-sidebar {
@@ -48,6 +49,7 @@
     padding: 0;
     margin-top: 60px;
     margin-bottom: 70px;
+    
   }
 }
 
@@ -94,6 +96,8 @@ body, html {
 .layout__main {
     position: relative;
     margin-top: 0;
+    border-left: 1px solid #e6ecf0;
+    border-right: 1px solid #e6ecf0;
 }
 
 .fixed-header {

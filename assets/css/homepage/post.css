@@ -1,6 +1,6 @@
 .post {
   display: flex;
-  border-bottom: 1px solid #e6ecf0;
+  border-top: 1px solid #e6ecf0;
   margin-bottom: 2px;
   padding: 25px 15px;
 }
@@ -54,7 +54,8 @@
 }
 
 .post__content {
-  font-size: 0.9rem;
+  font-size: 1rem;
+  color: #1a1a1a;
   line-height: 1.4;
   margin: 8px 0;
 }
