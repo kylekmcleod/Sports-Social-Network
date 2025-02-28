@@ -11,7 +11,6 @@
 .profile-panel {
     background: var(--profile-background-white);
     border-radius: var(--profile-border-radius);
-    border: 2px solid var(--profile-border-color);
     padding: 30px; 
     margin-top: 0;
     width: 100%; 
@@ -21,10 +20,23 @@
 
 .profile-panel__block {
     border-bottom: 1px solid var(--profile-border-color);
-    padding: 20px 15px; 
+    padding: 20px 0px; 
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.profile-panel__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.profile-panel__username {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--profile-secondary-text-color);
+    text-align: left;
 }
 
 .profile-panel__block:last-child {
@@ -33,11 +45,12 @@
 
 .profile-panel__edit {
     color: #000;
-    background-color: #f0f0f0;
+    background-color: #ececec;
     cursor: pointer;
     text-align: center;
-    padding: 5px 10px;
-    border-radius: 3px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
 }
 
 .profile-panel__edit:hover {
@@ -90,9 +103,8 @@
 
 .profile__banner {
     width: 100%;
-    height: 20%; 
+    height: 15%; 
     overflow: hidden;
-    border-radius: 16px; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,7 +117,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 16px; 
     margin: 0; 
 }
 
