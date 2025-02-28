@@ -1,4 +1,3 @@
-/* Desktop sidebar menu */
 .layout__left-sidebar .sidebar-menu {
   position: fixed;
   padding-top: 20px;
@@ -6,17 +5,17 @@
 
 .sidebar-menu__item {
   font-size: 19px;
-  color: #0F141A;
+  color: #1f1f1f;
   display: flex;
   align-items: center;
-  font-weight: 700;
-  padding: 10px;
+  font-weight: 400;
+  padding: 10px 10px;
   width: fit-content;
 }
 
 .sidebar-menu__item:hover {
-  background: rgba(255, 30, 0, 0.075);
-  border-radius: 10px;
+  background: rgba(44, 44, 44, 0.075);
+  border-radius: 20px;
   cursor: pointer;
 }
 
@@ -33,18 +32,15 @@
   filter: invert(36%) sepia(65%) saturate(2766%) hue-rotate(334deg) brightness(97%) contrast(88%);
 }
 
-/* Mobile Navigation */
 .mobile-nav {
   display: none;
 }
 
-/* Mobile and Tablet Styles */
 @media screen and (max-width: 1200px) {
   .layout__left-sidebar {
     display: none !important;
   }
 
-  /* Show mobile nav */
   .mobile-nav {
     display: block;
     position: fixed;
@@ -78,7 +74,6 @@
   }
 }
 
-/* Ensure desktop menu is hidden on mobile/tablet */
 @media screen and (max-width: 1200px) {
   .layout__left-sidebar,
   .layout__left-sidebar .sidebar-menu {
@@ -86,7 +81,6 @@
   }
 }
 
-/* Fix for right sidebar overlap */
 .layout__right-sidebar {
   position: fixed;
   width: 350px;
