@@ -1,5 +1,8 @@
 # COSC 360 Group Project
 
+## Project Overview
+Our web application will be a sports orientated personal blogging platform. It will provide a space for fans to share their opinions on teams and players, and allow general discussions regarding sports.
+
 ## Table of Contents
 1. [Team Members](#team-members)
 2. [Project Overview](#project-overview)
@@ -9,9 +12,6 @@
 - Kyle McLeod
 - Harper Kerstens
 - Matin Raoufi
-  
-## Project Overview
-Our web application will be a sports orientated personal blogging platform. It will provide a space for fans to share their opinions on teams and players, and allow general discussions regarding sports.
 
 ## Folder Structure:
 ```
@@ -28,8 +28,8 @@ myapp/
 │   ├── login.html               # Login page
 │   ├── admin.html               # Admin panel (TODO)
 │   ├── post.html                # Post page (TODO)
-│   ├── settings.html            # Settings page (TODO)
-│   ├── profile.html             # Profile page (TODO)
+│   ├── settings.html            # Settings page
+│   ├── profile.html             # Profile page
 │   ├── 404.html                 # Error 404 page (TODO)
 │
 ├── src/                         # Back-end logic
