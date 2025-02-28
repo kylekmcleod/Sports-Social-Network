@@ -142,3 +142,34 @@
     bottom: 10px; 
     right: 10px; 
 }
+
+.hidden {
+    display: none;
+}
+
+.settings-panel__input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.settings-panel__input:focus {
+    outline: none;
+    border-color: #1da1f2;
+}
+
+textarea.settings-panel__input {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.settings__file-input {
+    display: none;
+}
+
+.settings__edit-banner {
+    cursor: pointer;
+}
