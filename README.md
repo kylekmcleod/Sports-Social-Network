@@ -28,8 +28,8 @@ myapp/
 │   ├── login.html               # Login page
 │   ├── admin.html               # Admin panel (TODO)
 │   ├── post.html                # Post page (TODO)
-│   ├── settings.html            # Settings page (TODO)
-│   ├── profile.html             # Profile page (TODO)
+│   ├── settings.html            # Settings page
+│   ├── profile.html             # Profile page
 │   ├── 404.html                 # Error 404 page (TODO)
 │
 ├── src/                         # Back-end logic
