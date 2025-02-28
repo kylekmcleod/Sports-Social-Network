@@ -1,0 +1,139 @@
+:root {
+    --primary-text-color: #14171a;
+    --secondary-text-color: #657786;
+    --background-white: white;
+    --border-color: #e6ecf0;
+    --border-radius: 16px;
+    --hover-red: #d62828; 
+    --hover-background: #d7b4b4; 
+}
+
+
+.settings-panel {
+    background: var(--background-white);
+    border-radius: var(--border-radius);
+    border: 2px solid var(--border-color);
+    padding: 30px; 
+    margin-top: 30px; 
+    width: 100%; 
+    margin-left: auto;
+    margin-right: 40%; 
+}
+
+
+.settings-panel__block {
+    border-bottom: 1px solid var(--border-color);
+    padding: 20px 15px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.settings-panel__block:last-child {
+    border-bottom: none;
+}
+
+.settings-panel__edit {
+    color: #e63946;
+    cursor: pointer;
+    text-align: center;
+}
+
+.settings-panel__edit:hover {
+    color: var(--hover-red); 
+    background-color: var(--hover-background); 
+    border-radius: 3px; 
+}
+
+
+.settings-panel__header {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.settings-panel__heading {
+    font-size: 19px;
+    font-weight: 800;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.settings-panel__heading--centered {
+    text-align: center;
+    width: 100%;
+}
+
+
+.settings-panel__label {
+    font-size: 15px;
+    color: var(--primary-text-color);
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 2px;
+}
+
+
+.settings-panel__meta {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--secondary-text-color);
+}
+
+.settings__banner {
+    width: 100%;
+    height: 20%; 
+    overflow: hidden;
+    border-radius: 16px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; 
+    padding: 0; 
+    margin: 0; 
+}
+
+.settings__banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px; 
+    margin: 0; 
+}
+
+.settings__profile-image {
+    position: absolute;
+    bottom: 10px; 
+    left: 10px; 
+    width: 80px; 
+    height: 80px; 
+    border-radius: 50%;
+    border: 2px solid #fff; 
+}
+
+.settings__edit-banner,
+.settings__edit-profile {
+    position: absolute;
+    width: 24px; 
+    height: 24px; 
+    cursor: pointer;
+    fill: #e63946; 
+}
+
+.settings__edit-banner:hover,
+.settings__edit-profile:hover {
+    fill: var(--hover-red); 
+    background-color: var(--hover-background); 
+    border-radius: 3px; 
+}
+
+.settings__edit-banner {
+    top: 10px; 
+    right: 10px; 
+}
+
+.settings__edit-profile {
+    bottom: 10px; 
+    right: 10px; 
+}
