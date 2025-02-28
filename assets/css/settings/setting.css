@@ -48,18 +48,7 @@
     font-weight: bold;
     text-align: center;
     margin-bottom: 15px;
-}
-
-.settings-panel__heading {
-    font-size: 19px;
     font-weight: 800;
-    margin-bottom: 5px;
-    text-align: center;
-}
-
-.settings-panel__heading--centered {
-    text-align: center;
-    width: 100%;
 }
 
 .settings-panel__label {
