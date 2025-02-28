@@ -8,7 +8,6 @@
     --hover-background: #d7b4b4; 
 }
 
-
 .settings-panel {
     background: var(--background-white);
     border-radius: var(--border-radius);
@@ -19,7 +18,6 @@
     margin-left: auto;
     margin-right: 40%; 
 }
-
 
 .settings-panel__block {
     border-bottom: 1px solid var(--border-color);
@@ -45,7 +43,6 @@
     border-radius: 3px; 
 }
 
-
 .settings-panel__header {
     font-size: 24px;
     font-weight: bold;
@@ -65,7 +62,6 @@
     width: 100%;
 }
 
-
 .settings-panel__label {
     font-size: 15px;
     color: var(--primary-text-color);
@@ -74,11 +70,24 @@
     margin-top: 2px;
 }
 
+.settings-panel__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
 
 .settings-panel__meta {
     font-size: 13px;
     font-weight: 300;
     color: var(--secondary-text-color);
+    margin-top: 2px;
+}
+
+.settings-panel__edit {
+    color: #e63946;
+    cursor: pointer;
+    text-align: center;
+    padding: 5px;
 }
 
 .settings__banner {
