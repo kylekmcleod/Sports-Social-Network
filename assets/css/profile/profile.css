@@ -13,7 +13,7 @@
     border-radius: var(--profile-border-radius);
     border: 2px solid var(--profile-border-color);
     padding: 30px; 
-    margin-top: 0; /* Reduced gap to zero */
+    margin-top: 0;
     width: 100%; 
     margin-left: auto;
     margin-right: 40%; 
@@ -32,8 +32,8 @@
 }
 
 .profile-panel__edit {
-    color: #000; /* Black text */
-    background-color: #f0f0f0; /* Slightly greyed background */
+    color: #000;
+    background-color: #f0f0f0;
     cursor: pointer;
     text-align: center;
     padding: 5px 10px;
@@ -41,8 +41,8 @@
 }
 
 .profile-panel__edit:hover {
-    color: #000; /* Keep text black on hover */
-    background-color: #e0e0e0; /* Slightly darker grey background on hover */
+    color: #000;
+    background-color: #e0e0e0;
 }
 
 .profile-panel__header {
@@ -191,6 +191,6 @@
 }
 
 .profile-panel__communities-logos img {
-    width: auto; /* Maintain aspect ratio */
-    height: 30px; /* Scaled down */
+    width: auto;
+    height: 30px;
 }
