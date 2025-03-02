@@ -26,11 +26,10 @@ myapp/
 │   ├── homepage.html            # Homepage
 │   ├── register.html            # Register page
 │   ├── login.html               # Login page
-│   ├── admin.html               # Admin panel (TODO)
-│   ├── post.html                # Post page (TODO)
+│   ├── post.html                # Post page
 │   ├── settings.html            # Settings page
 │   ├── profile.html             # Profile page
-│   ├── 404.html                 # Error 404 page (TODO)
+│   ├── 404.html                 # Error 404 page
 │
 ├── src/                         # Back-end logic
 │   ├── controllers/             # PHP files for handling requests and logic
