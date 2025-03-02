@@ -158,7 +158,7 @@
 
 .settings-panel__input:focus {
     outline: none;
-    border-color: #1da1f2;
+    border-color:rgb(205, 205, 205);
 }
 
 textarea.settings-panel__input {
