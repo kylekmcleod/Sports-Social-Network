@@ -5,13 +5,35 @@ Our web application will be a sports orientated personal blogging platform. It w
 
 ## Table of Contents
 1. [Team Members](#team-members)
-2. [Project Overview](#project-overview)
+2. [Installation](#installation)
 3. [Folder Structure](#folder-structure)
-      
+   
 ## Team Members
 - Kyle McLeod
 - Harper Kerstens
 - Matin Raoufi
+
+## Installation (Windows)
+### 1. Prerequisites
+- Install [XAMPP](https://www.apachefriends.org/) (Apache, MySQL, PHP).
+
+### 2. Clone the project
+Clone the repository into your preferred location.
+
+### 3. Use a Symbolic Link
+A symbolic link (symlink) allows you to keep your project files in another location (e.g., Documents/your_project) while still making them accessible to XAMPP inside htdocs.
+
+- Locate the cloned folder location (e.g., C:\Users\YourName\Documents\your_project).
+- Locate the htdocs folder in XAMPP (usually C:\xampp\htdocs)
+- Open Command Prompt as Administrator:
+- Press Win + S, type cmd, right-click Command Prompt, and select Run as administrator.
+- Run the following command to create the symbolic link:
+- ```mklink /D C:\xampp\htdocs\COSC360 C:\Users\YourName\Documents\your_project```
+  
+4. Run the project
+- Open XAMPP Control Panel and start Apache and MySQL.
+- Project should be running. For example, try ```http://localhost/COSC360/public/homepage.php```
+
 
 ## Folder Structure:
 ```
