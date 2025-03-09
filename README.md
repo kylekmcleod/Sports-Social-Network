@@ -5,7 +5,7 @@ Our web application will be a sports orientated personal blogging platform. It w
 
 ## Table of Contents
 1. [Team Members](#team-members)
-2. [Installation](#installation)
+2. [Installation](#installation-(windows))
 3. [Folder Structure](#folder-structure)
    
 ## Team Members
@@ -44,6 +44,8 @@ A symbolic link (symlink) allows you to keep your project files in another locat
    - Click on the **Import** tab on the top bar.
    - Click the **Choose File** button and select the `sports_db.sql` file from this repository (in configs folder).
    - Click **Import** to import the database schema.
+  
+Test the connection by visiting ```http://localhost/COSC360/config/config.php```. If the connection is successful, "Database connection successful!", will show on the page. 
 
 
 ## Folder Structure:
