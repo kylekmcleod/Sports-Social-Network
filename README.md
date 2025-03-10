@@ -24,9 +24,8 @@ Clone the repository into your preferred location.
 A symbolic link (symlink) allows you to keep your project files in another location (e.g., Documents/your_project) while still making them accessible to XAMPP inside htdocs.
 
 - Locate the cloned folder location (e.g., C:\Users\YourName\Documents\your_project).
-- Locate the htdocs folder in XAMPP (usually C:\xampp\htdocs)
-- Open Command Prompt as Administrator:
-- Press Win + S, type cmd, right-click Command Prompt, and select Run as administrator.
+- Locate the htdocs folder in XAMPP (usually C:\xampp\htdocs).
+- Open Command Prompt as Administrator.
 - Run the following command to create the symbolic link:
 - ```mklink /D C:\xampp\htdocs\COSC360 C:\Users\YourName\Documents\your_project```
   
