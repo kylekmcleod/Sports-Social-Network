@@ -36,7 +36,7 @@
 
     <div class="layout">
       <?php
-        include_once('../components/leftSideBar.php');
+        include_once('../assets/components/leftSideBar.php');
       ?>
         
       <!-- Main content -->
