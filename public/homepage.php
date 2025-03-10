@@ -17,20 +17,20 @@
   <body>
     <!-- Header -->
     <header class="header">
-        <div class="header__content">
-            <div class="header__search-container">
-                <input 
-                    type="text" 
-                    class="header__search-input" 
-                    placeholder="Search..."
-                />
-                <img 
-                    src="../assets/svg/search.svg" 
-                    class="header__search-icon" 
-                    alt="Search"
-                />
-            </div>
+      <div class="header__content">
+        <div class="header__search-container">
+          <input 
+            type="text" 
+            class="header__search-input" 
+            placeholder="Search..."
+          />
+        <img 
+            src="../assets/svg/search.svg" 
+            class="header__search-icon" 
+            alt="Search"
+        />
         </div>
+      </div>
     </header>
 
     <div class="layout">
