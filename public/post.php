@@ -34,30 +34,9 @@
     </header>
 
     <div class="layout">
-      <div class="layout__left-sidebar">
-        <div class="sidebar-menu">
-          <div class="sidebar-menu__item sidebar-menu__item--active">
-            <img src="../assets/svg/home.svg" class="sidebar-menu__item-icon" />
-            <span>Home</span>
-          </div>
-          <div class="sidebar-menu__item">
-            <img src="../assets/svg/explore.svg" class="sidebar-menu__item-icon" />
-            <span>Explore</span>
-          </div>
-          <div class="sidebar-menu__item">
-            <img src="../assets/svg/notifications.svg" class="sidebar-menu__item-icon" />
-            <span>Notifications</span>
-          </div>
-          <div class="sidebar-menu__item">
-            <img src="../assets/svg/profile.svg" class="sidebar-menu__item-icon" />
-            <span>Profile</span>
-          </div>
-            <div class="sidebar-menu__item">
-            <img src="../assets/svg/setting.svg" class="sidebar-menu__item-icon" />
-            <span>Settings</span>
-          </div>
-        </div>
-      </div>
+      <?php
+        include_once('../components/leftSideBar.php');
+      ?>
 
       <!-- Main content -->
       <div class="layout__main">
