@@ -54,6 +54,7 @@ myapp/
 ├── assets/                      # For static assets like images, CSS, and JavaScript
 │   ├── css/                     # Custom CSS files (new CSS file for each component)
 │   ├── js/                      # Custom JavaScript files (can include AJAX calls here)
+│   ├── components/              # PHP components, like headers and sidebars
 │   └── images/                  # Images (logos, icons, etc.)
 │
 ├── public/                      # Public folder for all publicly accessible files
@@ -67,7 +68,6 @@ myapp/
 │
 ├── src/                         # Back-end logic
 │   ├── controllers/             # PHP files for handling requests and logic
-│   │   └── AuthController.php   # Handles user authentication logic (login, register, etc.)
 │   │
 │   ├── models/                  # Files for interacting with the database
 │   │   └── User.php             # User model
