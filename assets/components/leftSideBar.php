@@ -26,12 +26,14 @@ include_once('../src/controllers/auth.php');
         </a>
 
         <?php
-        if (redirectIfLoggedIn()):
-        ?>
+        if (redirectIfLoggedIn()) {
+            ?>
             <a href="logout.php" class="sidebar-menu__item">
                 <img src="../assets/svg/logout.svg" class="sidebar-menu__item-icon" />
                 <span>Logout</span>
             </a>
-        <?php endif; ?>
+            <?php
+        }
+        ?>
     </div>
 </div>
