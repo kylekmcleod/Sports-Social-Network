@@ -53,7 +53,7 @@
                       <div class="profile-panel__heading">Kevin Durant</div>
                       <div class="profile-panel__username">@easyMoneySniper</div>
                   </div>
-                  <div class="profile-panel__edit">EDIT</div>
+                  <a href="settings.php" class="profile-panel__edit">EDIT</a>
                 </div>
             
                 <div class="profile-panel__stats">
@@ -380,22 +380,9 @@
     </div>
 
     <!-- Mobile nav without logo -->
-    <nav class="mobile-nav">
-      <div class="sidebar-menu">
-        <div class="sidebar-menu__item sidebar-menu__item--active">
-          <img src="../assets/svg/home.svg" class="sidebar-menu__item-icon" />
-        </div>
-        <div class="sidebar-menu__item">
-          <img src="../assets/svg/explore.svg" class="sidebar-menu__item-icon" />
-        </div>
-        <div class="sidebar-menu__item">
-          <img src="../assets/svg/notifications.svg" class="sidebar-menu__item-icon" />
-        </div>
-        <div class="sidebar-menu__item">
-          <img src="../assets/svg/profile.svg" class="sidebar-menu__item-icon" />
-        </div>
-      </div>
-    </nav>
+    <?php
+      include_once('../assets/components/mobileNav.php');
+    ?>
     <script src="../assets/js/postSomething.js"></script>
   </body>
 </html>
