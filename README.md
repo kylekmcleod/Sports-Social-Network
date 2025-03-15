@@ -2,9 +2,8 @@
 Our web application will be a sports orientated personal blogging platform. It will provide a space for fans to share their opinions on teams and players, and allow general discussions regarding sports.
 
 # Table of Contents
-1. [Team Members](#team-members)
-2. [Installation](#installation-windows)
-3. [Folder Structure](#folder-structure)
+1. [Installation](#installation-windows)
+2. [Folder Structure](#folder-structure)
 
 # Installation (Windows)
 ### 1. Prerequisites
