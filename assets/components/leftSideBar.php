@@ -1,3 +1,7 @@
+<?php
+include_once('../src/controllers/auth.php');
+?>
+
 <div class="layout__left-sidebar">
     <div class="sidebar-menu">
         <a href="homepage.php" class="sidebar-menu__item sidebar-menu__item--active">
@@ -20,5 +24,14 @@
             <img src="../assets/svg/setting.svg" class="sidebar-menu__item-icon" />
             <span>Settings</span>
         </a>
+
+        <?php
+        if (checkIfLoggedIn()):
+        ?>
+            <a href="logout.php" class="sidebar-menu__item">
+                <img src="../assets/svg/logout.svg" class="sidebar-menu__item-icon" />
+                <span>Logout</span>
+            </a>
+        <?php endif; ?>
     </div>
 </div>
