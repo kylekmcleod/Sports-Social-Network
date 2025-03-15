@@ -1,3 +1,8 @@
+<?php
+include_once('../src/controllers/auth.php');
+checkIfNotLoggedIn();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
