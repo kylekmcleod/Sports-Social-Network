@@ -1,19 +1,12 @@
-# COSC 360 Group Project
-
-## Project Overview
+# Project Overview
 Our web application will be a sports orientated personal blogging platform. It will provide a space for fans to share their opinions on teams and players, and allow general discussions regarding sports.
 
-## Table of Contents
+# Table of Contents
 1. [Team Members](#team-members)
-2. [Installation](#installation-(windows))
+2. [Installation](#installation-windows)
 3. [Folder Structure](#folder-structure)
-   
-## Team Members
-- Kyle McLeod
-- Harper Kerstens
-- Matin Raoufi
 
-## Installation (Windows)
+# Installation (Windows)
 ### 1. Prerequisites
 - Install [XAMPP](https://www.apachefriends.org/) (Apache, MySQL, PHP).
 
@@ -47,13 +40,14 @@ A symbolic link (symlink) allows you to keep your project files in another locat
 Test the connection by visiting ```http://localhost/COSC360/config/config.php```. If the connection is successful, "Database connection successful!", will show on the page. 
 
 
-## Folder Structure:
+# Folder Structure:
 ```
 myapp/
 │
 ├── assets/                      # For static assets like images, CSS, and JavaScript
 │   ├── css/                     # Custom CSS files (new CSS file for each component)
 │   ├── js/                      # Custom JavaScript files (can include AJAX calls here)
+│   ├── components/              # PHP components, like headers and sidebars
 │   └── images/                  # Images (logos, icons, etc.)
 │
 ├── public/                      # Public folder for all publicly accessible files
@@ -67,7 +61,6 @@ myapp/
 │
 ├── src/                         # Back-end logic
 │   ├── controllers/             # PHP files for handling requests and logic
-│   │   └── AuthController.php   # Handles user authentication logic (login, register, etc.)
 │   │
 │   ├── models/                  # Files for interacting with the database
 │   │   └── User.php             # User model
