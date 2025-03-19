@@ -31,7 +31,7 @@
             <!-- form -->
             <div class="col-12 col-md-6">
                 <div class="card-body py-5 px-4">
-                    <form id="registerForm" novalidate>
+                    <form action="../src/controllers/RegisterAuthController.php" method="POST" id="registerForm" enctype="multipart/form-data">
                         <div class="mb-3 row">
                             <div class="profile-upload-container">
                                 <label for="profile-upload" class="profile-upload-box">
@@ -39,39 +39,39 @@
                                     <div class="upload-overlay">
                                     </div>
                                 </label>
-                                <input type="file" id="profile-upload" accept="image/*">
+                                <input type="file" id="profile-upload" name="profileImage" accept="image/*">
                             </div>
                             
                             <div class="col-6">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" required>
+                                <input type="text" class="form-control" id="firstName" name="firstName" required>
                                 <div id="firstNameError" class="text-danger" style="display:none;">First name is required.</div>
                             </div>
                             <div class="col-6">
                                 <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" required>
+                                <input type="text" class="form-control" id="lastName" name="lastName" required>
                                 <div id="lastNameError" class="text-danger" style="display:none;">Last name is required.</div>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username" required>
+                            <input type="text" class="form-control" id="username" name="username" required>
                             <div id="usernameError" class="text-danger" style="display:none;">Username is required.</div>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" required>
+                            <input type="email" class="form-control" id="email" name="email" required>
                             <div id="emailError" class="text-danger" style="display:none;">Please enter a valid email address.</div>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" required>
+                            <input type="password" class="form-control" id="password" name="password" required>
                             <div id="passwordError" class="text-danger" style="display:none;">Password is required.</div>
                         </div>
                         <button type="button" class="btn btn-outline-grey w-100 mb-2" id="uploadProfileBtn">Upload Profile Image</button>
-                        <button type="submit" class="btn w-100 register-btn">SIGN UP</button>
+                        <button type="submit" name="register" class="btn w-100 register-btn">SIGN UP</button>
                     </form>
-                    <p class="text-center mt-3">Already have an account? <a href="login.html">Log in</a></p>
+                    <p class="text-center mt-3">Already have an account? <a href="login.php">Log in</a></p>
                 </div>
             </div>
         </div>

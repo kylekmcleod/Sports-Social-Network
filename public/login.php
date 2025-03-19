@@ -30,20 +30,20 @@
 
             <!-- Login Form Section -->
             <div class="col-12 col-md-6">
-                <form id="loginForm" novalidate>
+                <form action="/COSC360/src/controllers/LoginAuthController.php" id="loginForm" method="POST">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="email" required>
+                        <input type="text" class="form-control" id="usernameOrEmail" name="usernameOrEmail" required>
                         <div id="emailError" class="text-danger" style="display:none;">Please enter a valid email address.</div>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" required>
+                        <input type="password" class="form-control" id="password" name="password" required>
                         <div id="passwordError" class="text-danger" style="display:none;">Password is required.</div>
                     </div>
-                    <button type="submit" class="btn w-100 register-btn">LOG IN</button>
+                    <button type="submit" name="login" class="btn w-100 register-btn">LOG IN</button>
                 </form>
-                <p class="text-center mt-3">Don't have an account? <a href="register.html">Sign up</a></p>
+                <p class="text-center mt-3">Don't have an account? <a href="register.php">Sign up</a></p>
             </div>
         </div>
     </div>

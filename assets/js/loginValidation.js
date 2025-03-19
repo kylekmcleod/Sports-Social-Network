@@ -8,7 +8,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     errorElements.forEach(element => element.style.display = 'none');
 
     // Validate Email
-    const email = document.getElementById('email').value.trim();
+    const email = document.getElementById('usernameOrEmail').value.trim();
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!email || !emailPattern.test(email)) {
         document.getElementById('emailError').style.display = 'block';
@@ -23,6 +23,6 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     }
 
     if (isValid) {
-        alert("Logged in successfully!");
+        this.submit();
     }
 });

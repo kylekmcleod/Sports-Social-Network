@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2025 at 10:46 PM
+-- Generation Time: Mar 19, 2025 at 08:03 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -180,7 +180,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `username`, `email`, `password_hash`, `first_name`, `last_name`, `profile_picture`, `bio`, `created_at`, `updated_at`) VALUES
 (3, 'testuser1', 'testuser1@example.com', 'hashedpassword1', 'John', 'Doe', 'http://example.com/profile1.jpg', 'This is a test bio for John.', '2025-03-10 20:57:30', '2025-03-10 20:57:30'),
 (4, 'testuser2', 'testuser2@example.com', 'hashedpassword2', 'Jane', 'Smith', 'http://example.com/profile2.jpg', 'This is a test bio for Jane.', '2025-03-10 20:57:30', '2025-03-10 20:57:30'),
-(5, 'testuser3', 'testuser3@example.com', 'hashedpassword3', 'Mark', 'Johnson', 'http://example.com/profile3.jpg', 'This is a test bio for Mark.', '2025-03-10 20:57:30', '2025-03-10 20:57:30');
+(5, 'testuser3', 'testuser3@example.com', 'hashedpassword3', 'Mark', 'Johnson', 'http://example.com/profile3.jpg', 'This is a test bio for Mark.', '2025-03-10 20:57:30', '2025-03-10 20:57:30'),
+(17, 's', 's@gmail.com', '$2y$10$EpugjwUdIIQHizt6j9aFe./9vZIlk04WXHvjE38y9YoFgcoc5Ify.', 's', 's', 'uploads/a3.PNG', NULL, '2025-03-15 20:37:31', '2025-03-15 20:37:31');
 
 -- --------------------------------------------------------
 
@@ -324,7 +325,7 @@ ALTER TABLE `profiles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `user_activity`

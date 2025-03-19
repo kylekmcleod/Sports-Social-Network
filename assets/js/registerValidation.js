@@ -44,6 +44,6 @@ document.getElementById('registerForm').addEventListener('submit', function(even
     }
 
     if (isValid) {
-        alert("Form submitted successfully!");
+        this.submit();
     }
 });
