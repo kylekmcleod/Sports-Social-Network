@@ -44,6 +44,9 @@ session_start();
 
       <!-- Main content -->
       <div class="layout__main">
+      <?php
+      if(checkIfLoggedIn()) {
+      ?>
         <div class="post-something">
           <img class="post-something__author-logo" src="../assets/images/profile-image-1.jpg" />
           <div class="post-something__content">
@@ -58,10 +61,14 @@ session_start();
             </div>
           </div>
         </div>
+      <?php
+      }
+      ?>
         
-         <!-- posts container -->
-        <div id="posts-container"></div>
-        </div>
+        
+      <!-- posts container -->
+      <div id="posts-container"></div>
+      </div>
 
       <!-- Right sidebar -->
       <div class="layout__right-sidebar-container">
