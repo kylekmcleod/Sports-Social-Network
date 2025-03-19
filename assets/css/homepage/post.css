@@ -45,6 +45,7 @@
 .post__publish-time {
   margin-left: 5px;
   color: #657786;
+  font-size: 15px;
 }
 
 .post__image {
@@ -54,8 +55,6 @@
 }
 
 .post__content {
-  word-wrap: break-word;
-  white-space: normal;
   font-size: 1rem;
   color: #2e2e2e;
   line-height: 1.4;
