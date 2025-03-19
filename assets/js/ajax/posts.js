@@ -20,8 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <img class="post__author-logo" src="../assets/images/profile-image-1.jpg" />
                             <div class="post__main">
                                 <div class="post__header">
-                                    <div class="post__author-name">${post.username}</div>
-                                    <div class="post__author-slug">@${post.username} &#8226;</div>
+                                    <div class="post__author-name">@${post.username}&nbsp;&nbsp;&#8226;</div>
                                     <div class="post__publish-time">
                                         ${(() => {
                                             const postDate = new Date(post.created_at);
