@@ -41,6 +41,7 @@ if ($result->num_rows > 0) {
             'username' => $post['username'],
             'content'  => $post['content'],
             'created_at' => $post['created_at']
+            
         ];
     }
 }
