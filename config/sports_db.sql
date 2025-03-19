@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2025 at 08:03 PM
+-- Generation Time: Mar 19, 2025 at 09:05 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -121,24 +121,27 @@ CREATE TABLE `posts` (
   `content` text NOT NULL,
   `image_url` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `likes` int(11) DEFAULT 0,
+  `comments` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`post_id`, `user_id`, `content`, `image_url`, `created_at`, `updated_at`) VALUES
-(17, 3, 'The big game is tomorrow! I’m so excited to see how our team performs. We’ve been training hard and it’s finally time to show what we’ve got. #GoTeam', NULL, '2025-03-10 21:00:00', '2025-03-10 21:00:00'),
-(18, 3, 'Watched an incredible soccer match today! The last-minute goal was unbelievable. That’s the kind of moment that keeps you coming back for more. #SoccerLove', NULL, '2025-03-10 21:05:00', '2025-03-10 21:05:00'),
-(19, 4, 'Finally hit a personal record on my 5k run today! It’s been a long journey, but persistence pays off. Can’t wait to push further next time! #RunnerGoals', NULL, '2025-03-10 21:10:00', '2025-03-10 21:10:00'),
-(20, 4, 'Big basketball game tonight! The energy in the arena is electric. Let’s see if we can bring home the win. I’m all in for the team! #BasketballLife', NULL, '2025-03-10 21:15:00', '2025-03-10 21:15:00'),
-(21, 5, 'Great workout at the gym today. Working on my upper body strength and feeling stronger every week. Consistency is key! #GymMotivation #Strength', NULL, '2025-03-10 21:20:00', '2025-03-10 21:20:00'),
-(22, 5, 'Had an amazing time watching the championship match. The intensity, the passion, it was all there. Sports like these inspire greatness. #ChampionshipVibes', NULL, '2025-03-10 21:25:00', '2025-03-10 21:25:00'),
-(23, 3, 'Can’t believe how many records were broken in today’s football match. It’s a reminder that the game is always evolving. Excited to see what’s next!', NULL, '2025-03-10 21:30:00', '2025-03-10 21:30:00'),
-(24, 3, 'My team’s finally making it to the playoffs! All the hard work and dedication is paying off. Let’s keep this momentum going and make it to the finals! #PlayoffsBound', NULL, '2025-03-10 21:35:00', '2025-03-10 21:35:00'),
-(25, 4, 'The World Cup is just around the corner! Can’t wait to see the best teams in the world compete for the title. Who’s your pick to win? #WorldCup2025', NULL, '2025-03-10 21:40:00', '2025-03-10 21:40:00'),
-(26, 5, 'Just finished watching an intense tennis match. The level of skill and precision was mind-blowing. Respect to both players! #Tennis #Sportsmanship', NULL, '2025-03-10 21:45:00', '2025-03-10 21:45:00');
+INSERT INTO `posts` (`post_id`, `user_id`, `content`, `image_url`, `created_at`, `updated_at`, `likes`, `comments`) VALUES
+(17, 3, 'The big game is tomorrow! I’m so excited to see how our team performs. We’ve been training hard and it’s finally time to show what we’ve got. #GoTeam', NULL, '2025-03-10 21:00:00', '2025-03-10 21:00:00', 0, 0),
+(18, 3, 'Watched an incredible soccer match today! The last-minute goal was unbelievable. That’s the kind of moment that keeps you coming back for more. #SoccerLove', NULL, '2025-03-10 21:05:00', '2025-03-10 21:05:00', 0, 0),
+(19, 4, 'Finally hit a personal record on my 5k run today! It’s been a long journey, but persistence pays off. Can’t wait to push further next time! #RunnerGoals', NULL, '2025-03-10 21:10:00', '2025-03-10 21:10:00', 0, 0),
+(20, 4, 'Big basketball game tonight! The energy in the arena is electric. Let’s see if we can bring home the win. I’m all in for the team! #BasketballLife', NULL, '2025-03-10 21:15:00', '2025-03-10 21:15:00', 0, 0),
+(21, 5, 'Great workout at the gym today. Working on my upper body strength and feeling stronger every week. Consistency is key! #GymMotivation #Strength', NULL, '2025-03-10 21:20:00', '2025-03-10 21:20:00', 0, 0),
+(22, 5, 'Had an amazing time watching the championship match. The intensity, the passion, it was all there. Sports like these inspire greatness. #ChampionshipVibes', NULL, '2025-03-10 21:25:00', '2025-03-10 21:25:00', 0, 0),
+(23, 3, 'Can’t believe how many records were broken in today’s football match. It’s a reminder that the game is always evolving. Excited to see what’s next!', NULL, '2025-03-10 21:30:00', '2025-03-10 21:30:00', 0, 0),
+(24, 3, 'My team’s finally making it to the playoffs! All the hard work and dedication is paying off. Let’s keep this momentum going and make it to the finals! #PlayoffsBound', NULL, '2025-03-10 21:35:00', '2025-03-10 21:35:00', 0, 0),
+(25, 4, 'The World Cup is just around the corner! Can’t wait to see the best teams in the world compete for the title. Who’s your pick to win? #WorldCup2025', NULL, '2025-03-10 21:40:00', '2025-03-10 21:40:00', 0, 0),
+(26, 5, 'Just finished watching an intense tennis match. The level of skill and precision was mind-blowing. Respect to both players! #Tennis #Sportsmanship', NULL, '2025-03-10 21:45:00', '2025-03-10 21:45:00', 0, 0),
+(58, 17, 'Just posted this by typing legit on the webpage! #LebronJames', NULL, '2025-03-19 20:04:45', '2025-03-19 20:04:45', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -313,7 +316,7 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `profiles`

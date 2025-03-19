@@ -44,24 +44,40 @@ session_start();
 
       <!-- Main content -->
       <div class="layout__main">
-        <div class="post-something">
-          <img class="post-something__author-logo" src="../assets/images/profile-image-1.jpg" />
+      <?php
+      if(checkIfLoggedIn()) {
+      ?>
+        <form class="post-something" method="POST" action="../src/controllers/AddPostController.php">
+          <img class="post-something__author-logo" src="../assets/images/profile-image-1.jpg" alt="Author Logo" />
           <div class="post-something__content">
             <textarea 
               class="post-something__input" 
               placeholder="What's happening in sports?"
               maxlength="280"
+              name="content"
             ></textarea>
             <div class="post-something__actions">
               <span class="post-something__char-count">280</span>
-              <button class="post-something__button">Post</button>
+              <button type="submit" class="post-something__button">Post</button>
             </div>
           </div>
+        </form>
+
+      <?php
+      } else {
+      ?>
+      <div class="post-something__login-container">
+        <p class="post-something__login-message">You must be logged in to post something.</p>
+        <button class="post-something__login-button" onclick="window.location.href='login.php'">Login</button>
         </div>
+      <?php
+      }
+      ?>
         
-         <!-- posts container -->
-        <div id="posts-container"></div>
-        </div>
+        
+      <!-- posts container -->
+      <div id="posts-container"></div>
+      </div>
 
       <!-- Right sidebar -->
       <div class="layout__right-sidebar-container">
@@ -219,5 +235,6 @@ session_start();
     ?>
     <script src="../assets/js/postSomething.js"></script>
     <script src="../assets/js/ajax/posts.js"></script>
+    <script src="../assets/js/ajax/addPost.js"></script>
   </body>
 </html>

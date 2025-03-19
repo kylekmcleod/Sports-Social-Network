@@ -20,9 +20,29 @@ document.addEventListener('DOMContentLoaded', function() {
                             <img class="post__author-logo" src="../assets/images/profile-image-1.jpg" />
                             <div class="post__main">
                                 <div class="post__header">
-                                    <div class="post__author-name">${post.username}</div>
-                                    <div class="post__author-slug">@${post.username}</div>
-                                    <div class="post__publish-time">${new Date(post.created_at).toLocaleString()}</div>
+                                    <div class="post__author-name">@${post.username}&nbsp;&nbsp;&#8226;</div>
+                                    <div class="post__publish-time">
+                                        ${(() => {
+                                            const postDate = new Date(post.created_at);
+                                            const currentYear = new Date().getFullYear();
+                                            
+                                            const options = {
+                                                month: 'short',
+                                                day: 'numeric',
+                                                hour: 'numeric',
+                                                minute: 'numeric',
+                                            };
+                                            
+                                            // If the post year is different from the current year, include the year
+                                            if (postDate.getFullYear() !== currentYear) {
+                                                options.year = 'numeric';
+                                            }
+
+                                            return postDate.toLocaleString('en-US', options);
+                                        })()}
+                                    </div>
+
+
                                 </div>
                                 <div class="post__content">
                                     ${post.content}
