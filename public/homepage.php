@@ -62,6 +62,13 @@ session_start();
           </div>
         </div>
       <?php
+      } else {
+      ?>
+      <div class="post-something__login-container">
+        <p class="post-something__login-message">You must be logged in to post something.</p>
+        <button class="post-something__login-button" onclick="window.location.href='login.php'">Login</button>
+        </div>
+      <?php
       }
       ?>
         

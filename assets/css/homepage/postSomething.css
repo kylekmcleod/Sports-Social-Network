@@ -66,4 +66,34 @@
 
 .post-something__button:hover {
     background: var(--hover-red);
-} 
+}
+
+.post-something__login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    text-align: center;
+}
+
+.post-something__login-message {
+    font-size: 16px;
+    color: var(--text-light-gray);
+    margin-bottom: 10px;
+}
+
+.post-something__login-button {
+    background: var(--primary-red);
+    color: var(--text-light-red);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.post-something__login-button:hover {
+    background: var(--hover-red);
+}
