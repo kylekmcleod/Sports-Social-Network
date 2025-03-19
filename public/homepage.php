@@ -47,20 +47,22 @@ session_start();
       <?php
       if(checkIfLoggedIn()) {
       ?>
-        <div class="post-something">
-          <img class="post-something__author-logo" src="../assets/images/profile-image-1.jpg" />
+        <form class="post-something" method="POST" action="../src/controllers/AddPostController.php">
+          <img class="post-something__author-logo" src="../assets/images/profile-image-1.jpg" alt="Author Logo" />
           <div class="post-something__content">
             <textarea 
               class="post-something__input" 
               placeholder="What's happening in sports?"
               maxlength="280"
+              name="content"
             ></textarea>
             <div class="post-something__actions">
               <span class="post-something__char-count">280</span>
-              <button class="post-something__button">Post</button>
+              <button type="submit" class="post-something__button">Post</button>
             </div>
           </div>
-        </div>
+        </form>
+
       <?php
       } else {
       ?>
@@ -233,5 +235,6 @@ session_start();
     ?>
     <script src="../assets/js/postSomething.js"></script>
     <script src="../assets/js/ajax/posts.js"></script>
+    <script src="../assets/js/ajax/addPost.js"></script>
   </body>
 </html>
