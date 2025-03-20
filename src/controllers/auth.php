@@ -12,6 +12,11 @@ function checkIfLoggedIn() {
     return isset($_SESSION['user_id']);
 }
 
+// Add this function for backward compatibility
+function isLoggedIn() {
+    return checkIfLoggedIn();
+}
+
 function logoutUser() {
     session_unset();
     session_destroy();

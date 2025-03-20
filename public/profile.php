@@ -20,6 +20,7 @@ redirectIfNotLoggedIn();
     <link rel="stylesheet" href="../assets/css/homepage/sports-scores.css" />
     <link rel="stylesheet" href="../assets/css/settings/setting.css" />
     <link rel="stylesheet" href="../assets/css/profile/profile.css" />
+    <script src="../assets/js/profile.js"></script>
   </head>
   <body>
     <!-- Header -->
@@ -48,190 +49,9 @@ redirectIfNotLoggedIn();
 
          <!-- Main content -->
         <div class="layout__main">
-            <div class="profile__banner">
-                <img src="../assets/images/kobeBannerHorizontal.jpg" alt="Banner Image" class="profile__banner-image" />
-                <img src="../assets/images/profile-image-4.jpg" alt="Profile Image" class="profile__profile-image" />
+            <div id="profile-container">
+                <!-- Profile data will be dynamically injected here -->
             </div>
-            <div class="profile-panel">
-                <div class="profile-panel__block">
-                  <div class="profile-panel__info">
-                      <div class="profile-panel__heading">Kevin Durant</div>
-                      <div class="profile-panel__username">@easyMoneySniper</div>
-                  </div>
-                  <a href="settings.php" class="profile-panel__edit">EDIT</a>
-                </div>
-            
-                <div class="profile-panel__stats">
-                    <div class="profile-panel__stats-item"><span>230</span> FOLLOWERS</div>
-                    <div class="profile-panel__stats-item"><span>180</span> FOLLOWING</div>
-                    <div class="profile-panel__stats-item"><span>8</span> POSTS</div>
-                </div>
-                <div class="profile-panel__about">
-                    About:
-                </div>
-                <div class="profile-panel__about-text">
-                    #35 Phoenix Suns, Soon to be #7 for Minnesota Timberwolves
-                </div>
-                <div class="profile-panel__communities">
-                    <div class="profile-panel__communities-heading">
-                        Top Communities:
-                    </div>
-                    <div class="profile-panel__communities-logos">
-                        <img src="../assets/images/nbaLogo.png" alt="NBA Logo" />
-                        <img src="../assets/images/nhlLogo.png" alt="NHL Logo" />
-                    </div>
-                </div>
-            </div>
-
-            <div class="post">
-                <img class="post__author-logo" src="../assets/images/profile-image-4.jpg" />
-                <div class="post__main">
-                  <div class="post__header">
-                    <div class="post__author-name">
-                      Kevin Durant
-                    </div>
-                    <div class="post__author-slug">
-                      @easyMoneySniper
-                    </div>
-                    <div class="post__publish-time">
-                      38m
-                    </div>
-                  </div>
-                  <div class="post__content">
-                    My bad you guys Cade is going to be the face of the league for sure!
-                  </div>
-                  <div class="post__actions">
-                    <div class="post__action-button">
-                      <img src="../assets/svg/comment.svg" class="post__action-icon" />
-                      <span class="post__action-count">24</span>
-                    </div>
-                    <div class="post__action-button">
-                      <img src="../assets/svg/heart.svg" class="post__action-icon" />
-                      <span class="post__action-count">482</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="post">
-                <img class="post__author-logo" src="../assets/images/profile-image-4.jpg" />
-                <div class="post__main">
-                  <div class="post__header">
-                    <div class="post__author-name">
-                      Kevin Durant
-                    </div>
-                    <div class="post__author-slug">
-                      @easyMoneySniper
-                    </div>
-                    <div class="post__publish-time">
-                      55m
-                    </div>
-                  </div>
-
-                  <div class="post__content">
-                    Stephon Castle is the future of the NBA, mark my words
-                  </div>
-                  <div class="post__actions">
-                    <div class="post__action-button">
-                      <img src="../assets/svg/comment.svg" class="post__action-icon" />
-                      <span class="post__action-count">24</span>
-                    </div>
-                    <div class="post__action-button">
-                      <img src="../assets/svg/heart.svg" class="post__action-icon" />
-                      <span class="post__action-count">482</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="post">
-                <img class="post__author-logo" src="../assets/images/profile-image-4.jpg" />
-                <div class="post__main">
-                  <div class="post__header">
-                    <div class="post__author-name">
-                      Kevin Durant
-                    </div>
-                    <div class="post__author-slug">
-                      @easyMoneySniper
-                    </div>
-                    <div class="post__publish-time">
-                      2h 35m
-                    </div>
-                  </div>
-                  <div class="post__content">
-                    Whew! thank god Canada won tonight, I was worried there for a second #noMoTarrifs
-                  </div>
-                  <div class="post__actions">
-                    <div class="post__action-button">
-                      <img src="../assets/svg/comment.svg" class="post__action-icon" />
-                      <span class="post__action-count">24</span>
-                    </div>
-                    <div class="post__action-button">
-                      <img src="../assets/svg/heart.svg" class="post__action-icon" />
-                      <span class="post__action-count">482</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            
-              <div class="post">
-                <img class="post__author-logo" src="../assets/images/profile-image-4.jpg" />
-                <div class="post__main">
-                  <div class="post__header">
-                    <div class="post__author-name">
-                      Kevin Durant
-                    </div>
-                    <div class="post__author-slug">
-                      @easyMoneySniper
-                    </div>
-                    <div class="post__publish-time">
-                      4h 21m
-                    </div>
-                  </div>
-                  <div class="post__content">
-                    Heard rumours people are saying Bronny could beat me 1v1, can't be waisting my time on small fries #easyMoney
-                  </div>
-                  <div class="post__actions">
-                    <div class="post__action-button">
-                      <img src="../assets/svg/comment.svg" class="post__action-icon" />
-                      <span class="post__action-count">24</span>
-                    </div>
-                    <div class="post__action-button">
-                      <img src="../assets/svg/heart.svg" class="post__action-icon" />
-                      <span class="post__action-count">482</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="post">
-                <img class="post__author-logo" src="../assets/images/profile-image-4.jpg" />
-                <div class="post__main">
-                  <div class="post__header">
-                    <div class="post__author-name">
-                      Kevin Durant
-                    </div>
-                    <div class="post__author-slug">
-                      @easyMoneySniper
-                    </div>
-                    <div class="post__publish-time">
-                      6h 12m
-                    </div>
-                  </div>
-                  <div class="post__content">
-                    I should probably put the phone down and start training soon, don't want to end up like PodcastP #LOL
-                  </div>
-                  <div class="post__actions">
-                    <div class="post__action-button">
-                      <img src="../assets/svg/comment.svg" class="post__action-icon" />
-                      <span class="post__action-count">24</span>
-                    </div>
-                    <div class="post__action-button">
-                      <img src="../assets/svg/heart.svg" class="post__action-icon" />
-                      <span class="post__action-count">482</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
         </div>
 
       <!-- Right sidebar -->
@@ -388,6 +208,11 @@ redirectIfNotLoggedIn();
     <?php
       include_once('../assets/components/mobileNav.php');
     ?>
+    <!-- Only include postSomething.js if needed -->
+    <script>
+      // Create a global variable to prevent the error in postSomething.js
+      window.hasTextarea = false;
+    </script>
     <script src="../assets/js/postSomething.js"></script>
   </body>
 </html>

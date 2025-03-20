@@ -205,3 +205,28 @@
     width: auto;
     height: 30px;
 }
+
+.posts-header {
+  margin: 20px 0 10px;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.no-posts {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f8f9fa;
+  text-align: center;
+  color: #6c757d;
+  margin-bottom: 20px;
+}
+
+.loading-posts {
+  padding: 15px;
+  text-align: center;
+  color: #6c757d;
+}
+
+#user-posts {
+  margin-top: 30px;
+}
