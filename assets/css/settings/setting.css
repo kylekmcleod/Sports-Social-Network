@@ -173,3 +173,22 @@ textarea.settings-panel__input {
 .settings__edit-banner {
     cursor: pointer;
 }
+
+.settings-panel__status-message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.settings-panel__status-message--success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.settings-panel__status-message--error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+

@@ -43,17 +43,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const bannerImage = '../assets/images/kobeBannerHorizontal.jpg';
 
             const profileImg = userData.profile_picture ? 
-            `http://localhost/cosc360/src/utils/getImage.php?file=${userData.profile_picture}` : 
+            `${window.location.origin}/cosc360/src/utils/getImage.php?file=${userData.profile_picture}` : 
             '../assets/images/defaultProfilePic.png';
 
             console.log('Profile image:', profileImg);
 
-            (userData.profile_picture || '../assets/images/profile-image-4.jpg');
-
             profileContainer.innerHTML = `
                 <div class="profile__banner">
                     <img src="${bannerImage}" alt="Banner Image" class="profile__banner-image" />
-                    <img src="${profileImg || '../assets/images/profile-image-4.jpg'}" alt="Profile Image" class="profile__profile-image" />
+                    <img src="${profileImg}" alt="Profile Image" class="profile__profile-image" />
                 </div>
                 <div class="profile-panel">
                 <div class="profile-panel__block">
@@ -133,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             posts.forEach(post => {
                 postsHTML += `
                 <div class="post">
-                    <img class="post__author-logo" src="${post.profile_picture || '../assets/images/profile-image-4.jpg'}" />
+                    <img class="post__author-logo" src="${typeof getImageUrl === 'function' ? getImageUrl(post.profile_picture) : `${window.location.origin}/cosc360/src/utils/getImage.php?file=${post.profile_picture}`}" />
                     <div class="post__main">
                         <div class="post__header">
                             <div class="post__author-name">
