@@ -20,7 +20,7 @@
 
 .profile-panel__block {
     border-bottom: 1px solid var(--profile-border-color);
-    padding: 15px 0; /* Reduced padding */
+    padding: 20px 0px; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -173,35 +173,16 @@
 }
 
 .profile-panel__about {
-    font-size: 16px;
+    font-size: 15px;
     color: var(--profile-primary-text-color);
     font-weight: bold;
-    margin-top: 10px; 
-    padding-top: 0; 
-    border-top: none; 
+    margin-top: 20px;
 }
 
 .profile-panel__about-text {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--profile-secondary-text-color);
-    margin-top: 8px;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    line-height: 1.5;
-    min-height: 50px;
-    white-space: pre-line; 
-}
-
-.profile-panel__details {
-  margin-top: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px; 
-}
-
-.profile-panel__details div {
-  padding: 5px 0;
+    margin-top: 5px;
 }
 
 .profile-panel__communities {
@@ -223,30 +204,4 @@
 .profile-panel__communities-logos img {
     width: auto;
     height: 30px;
-}
-
-.posts-header {
-  margin: 20px 0 10px;
-  padding-left: 15px; 
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-.no-posts {
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #f8f9fa;
-  text-align: center;
-  color: #6c757d;
-  margin-bottom: 20px;
-}
-
-.loading-posts {
-  padding: 15px;
-  text-align: center;
-  color: #6c757d;
-}
-
-#user-posts {
-  margin-top: 30px;
 }

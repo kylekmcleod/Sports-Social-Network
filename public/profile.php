@@ -20,7 +20,7 @@ redirectIfNotLoggedIn();
     <link rel="stylesheet" href="../assets/css/homepage/sports-scores.css" />
     <link rel="stylesheet" href="../assets/css/settings/setting.css" />
     <link rel="stylesheet" href="../assets/css/profile/profile.css" />
-    <script src="../assets/js/profile.js"></script>
+    <script src="../assets/js/ajax/profile.js"></script>
   </head>
   <body>
     <!-- Header -->
@@ -208,9 +208,7 @@ redirectIfNotLoggedIn();
     <?php
       include_once('../assets/components/mobileNav.php');
     ?>
-    <!-- Only include postSomething.js if needed -->
     <script>
-      // Create a global variable to prevent the error in postSomething.js
       window.hasTextarea = false;
     </script>
     <script src="../assets/js/postSomething.js"></script>

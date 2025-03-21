@@ -36,7 +36,7 @@ try {
         sendErrorResponse('Database connection failed');
     }
 
-    $sql = "SELECT u.user_id, u.first_name, u.last_name, u.username, u.profile_picture, u.bio, 
+    $sql = "SELECT u.user_id, u.first_name, u.last_name, u.username, u.profile_picture, u.bio, u.followers_count, u.following_count, u.posts_count, 
            p.date_of_birth, p.location, p.website_url 
            FROM users u 
            LEFT JOIN profiles p ON u.user_id = p.user_id 
@@ -73,7 +73,6 @@ try {
             $userData['date_of_birth'] = null;
             $userData['location'] = null;
             $userData['website_url'] = null;
-            // Ensure bio is never undefined, use empty string instead of null
             $userData['bio'] = $userData['bio'] ?: '';
             
             echo json_encode($userData);
