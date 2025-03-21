@@ -2,44 +2,61 @@
 session_start();
 include_once('../../config/config.php');
 
-// REGISTER CONTROLLER
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $first_name = trim($_POST['firstName']);
-    $last_name = trim($_POST['lastName']);
+    $firstName = trim($_POST['firstName']);
+    $lastName = trim($_POST['lastName']);
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $profilePicturePath = null;
 
-    $profile_image = NULL;
-    if (!empty($_FILES['profileImage']['name'])) {
-        $target_dir = "uploads/";
-        $target_file = $target_dir . basename($_FILES["profileImage"]["name"]);
-        move_uploaded_file($_FILES["profileImage"]["tmp_name"], $target_file);
-        $profile_image = $target_file;
+    if (isset($_FILES['profileImage']) && $_FILES['profileImage']['error'] == 0) {
+        $uploadsDir = __DIR__ . '/../../uploads/';
+        if (!file_exists($uploadsDir)) {
+            mkdir($uploadsDir, 0777, true);
+        }
+
+        $filename = time() . '_' . basename($_FILES['profileImage']['name']);
+        $targetFilePath = $uploadsDir . $filename;
+        
+        if (move_uploaded_file($_FILES['profileImage']['tmp_name'], $targetFilePath)) {
+            $profilePicturePath = 'uploads/' . $filename;
+        } else {
+            $_SESSION['error'] = "Failed to upload profile image.";
+            header("Location: ../../public/register.php");
+            exit();
+        }
     }
 
-    $stmt = $conn->prepare("SELECT user_id FROM users WHERE username = ? OR email = ?");
-    $stmt->bind_param("ss", $username, $email);
-    $stmt->execute();
-    $stmt->store_result();
-    if ($stmt->num_rows > 0) {
-        echo "Username or Email already exists!";
+    $checkStmt = $conn->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
+    $checkStmt->bind_param("ss", $username, $email);
+    $checkStmt->execute();
+    $checkStmt->store_result();
+    
+    if ($checkStmt->num_rows > 0) {
+        $_SESSION['error'] = "Username or email already exists!";
+        header("Location: ../../public/register.php");
         exit();
     }
-    $stmt->close();
-
+    $checkStmt->close();
+    
     $stmt = $conn->prepare("INSERT INTO users (first_name, last_name, username, email, password_hash, profile_picture) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssss", $first_name, $last_name, $username, $email, $password, $profile_image);
-
+    $stmt->bind_param("ssssss", $firstName, $lastName, $username, $email, $password, $profilePicturePath);
+    
     if ($stmt->execute()) {
-        $_SESSION['user_id'] = $stmt->insert_id;
-        $_SESSION['username'] = $username;
-        header("Location: /COSC360/public/login.php");
-
+        $_SESSION['success'] = "Registration successful! You can now log in.";
+        header("Location: ../../public/login.php");
         exit();
     } else {
-        echo "Error: " . $stmt->error;
+        $_SESSION['error'] = "Registration failed: " . $conn->error;
+        header("Location: ../../public/register.php");
+        exit();
     }
+    
     $stmt->close();
+} else {
+    $_SESSION['error'] = "Please use the registration form.";
+    header("Location: ../../public/register.php");
+    exit();
 }
 ?>
