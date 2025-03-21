@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         About:
                     </div>
                     <div class="profile-panel__about-text">
-                        ${userData.bio || 'No bio available'}
+                        ${userData.bio ? userData.bio : 'No bio available. Click EDIT to add a bio.'}
                     </div>
                     <div class="profile-panel__details">
                         <div>Date of Birth: ${userData.date_of_birth || 'N/A'}</div>

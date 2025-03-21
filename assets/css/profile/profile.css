@@ -20,7 +20,7 @@
 
 .profile-panel__block {
     border-bottom: 1px solid var(--profile-border-color);
-    padding: 20px 0px; 
+    padding: 15px 0; /* Reduced padding */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -173,16 +173,35 @@
 }
 
 .profile-panel__about {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--profile-primary-text-color);
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 10px; 
+    padding-top: 0; 
+    border-top: none; 
 }
 
 .profile-panel__about-text {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--profile-secondary-text-color);
-    margin-top: 5px;
+    margin-top: 8px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    line-height: 1.5;
+    min-height: 50px;
+    white-space: pre-line; 
+}
+
+.profile-panel__details {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; 
+}
+
+.profile-panel__details div {
+  padding: 5px 0;
 }
 
 .profile-panel__communities {

@@ -52,6 +52,7 @@ try {
     $result = $stmt->get_result();
     
     if ($result && $userData = $result->fetch_assoc()) {
+        $userData['bio'] = $userData['bio'] ?: '';
         echo json_encode($userData);
     } else {
         $stmt->close();
@@ -72,6 +73,8 @@ try {
             $userData['date_of_birth'] = null;
             $userData['location'] = null;
             $userData['website_url'] = null;
+            // Ensure bio is never undefined, use empty string instead of null
+            $userData['bio'] = $userData['bio'] ?: '';
             
             echo json_encode($userData);
         } else {
