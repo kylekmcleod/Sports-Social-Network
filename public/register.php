@@ -31,11 +31,26 @@
             <!-- form -->
             <div class="col-12 col-md-6">
                 <div class="card-body py-5 px-4">
+                    <?php
+                    if (session_status() === PHP_SESSION_NONE) {
+                        session_start();
+                    }
+                    
+                    if (isset($_SESSION['error'])) {
+                        echo '<div class="alert alert-danger">' . $_SESSION['error'] . '</div>';
+                        unset($_SESSION['error']);
+                    }
+                    
+                    if (isset($_SESSION['success'])) {
+                        echo '<div class="alert alert-success">' . $_SESSION['success'] . '</div>';
+                        unset($_SESSION['success']);
+                    }
+                    ?>
                     <form action="../src/controllers/RegisterAuthController.php" method="POST" id="registerForm" enctype="multipart/form-data">
                         <div class="mb-3 row">
                             <div class="profile-upload-container">
                                 <label for="profile-upload" class="profile-upload-box">
-                                    <img id="profile-preview" src="https://t3.ftcdn.net/jpg/09/64/89/18/360_F_964891898_SuTIP6H2AVZkBuUG2cIpP9nvdixORKpM.jpg" alt="Profile Image">
+                                    <img id="profile-preview" src="../assets/images/defaultProfilePic.png" alt="Profile Image">
                                     <div class="upload-overlay">
                                     </div>
                                 </label>

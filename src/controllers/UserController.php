@@ -6,11 +6,9 @@ error_reporting(E_ALL);
 error_log("UserController.php executed");
 
 include_once('../../config/config.php');
-include_once('auth.php');
+include_once('auth.php'); 
+require_once('../utilities/ProfileImageHelper.php'); 
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
 
 function sendErrorResponse($message, $statusCode = 500) {
     http_response_code($statusCode);
@@ -53,6 +51,9 @@ try {
     
     if ($result && $userData = $result->fetch_assoc()) {
         $userData['bio'] = $userData['bio'] ?: '';
+        
+        $userData['profile_picture'] = ProfileImageHelper::getProfileImageUrl($userData['profile_picture']);
+        
         echo json_encode($userData);
     } else {
         $stmt->close();
@@ -73,8 +74,9 @@ try {
             $userData['date_of_birth'] = null;
             $userData['location'] = null;
             $userData['website_url'] = null;
-            // Ensure bio is never undefined, use empty string instead of null
             $userData['bio'] = $userData['bio'] ?: '';
+            
+            $userData['profile_picture'] = ProfileImageHelper::getProfileImageUrl($userData['profile_picture']);
             
             echo json_encode($userData);
         } else {
@@ -89,3 +91,4 @@ try {
     error_log("General error in UserController: " . $e->getMessage());
     sendErrorResponse('Server error: ' . $e->getMessage());
 }
+?>

@@ -249,3 +249,20 @@
 #user-posts {
   margin-top: 30px;
 }
+
+.loading, .error {
+    text-align: center;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.loading {
+    background-color: #f5f8fa;
+}
+
+.error {
+    background-color: #fde2e2;
+    color: #d32f2f;
+    border: 1px solid #fbc9c9;
+}

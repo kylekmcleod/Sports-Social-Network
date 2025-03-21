@@ -1,11 +1,29 @@
 <?php
+include_once('../config/config.php');
 include_once('../src/controllers/auth.php');
+require_once('../src/utilities/ProfileImageHelper.php');
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$userId = $_SESSION['user_id'];
+$stmt = $conn->prepare("SELECT username, first_name, last_name, profile_picture FROM users WHERE user_id = ?");
+$stmt->bind_param("i", $userId);
+$stmt->execute();
+$stmt->bind_result($username, $firstName, $lastName, $profilePicture);
+$stmt->fetch();
+$stmt->close();
+
+$profileImageUrl = ProfileImageHelper::getProfileImageUrl($profilePicture);
+
 redirectIfNotLoggedIn();
 ?>
 
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sport Page</title>
     <link rel="stylesheet" href="../assets/css/globals.css" />
@@ -20,9 +38,12 @@ redirectIfNotLoggedIn();
     <link rel="stylesheet" href="../assets/css/homepage/sports-scores.css" />
     <link rel="stylesheet" href="../assets/css/settings/setting.css" />
     <link rel="stylesheet" href="../assets/css/profile/profile.css" />
+    <script>
+        const profileImageUrl = "<?php echo $profileImageUrl; ?>";
+    </script>
     <script src="../assets/js/profile.js"></script>
-  </head>
-  <body>
+</head>
+<body>
     <!-- Header -->
     <header class="header">
         <div class="header__content">

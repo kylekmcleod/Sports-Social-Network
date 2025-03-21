@@ -40,19 +40,40 @@ document.addEventListener('DOMContentLoaded', () => {
             
             console.log('Profile data loaded successfully:', userData);
             
+            if (typeof userData !== 'object' || userData === null) {
+                throw new Error('Invalid user data format');
+            }
+            
+            const user = {
+                first_name: userData.first_name || 'User',
+                last_name: userData.last_name || '',
+                username: userData.username || 'user',
+                bio: userData.bio || '',
+                date_of_birth: userData.date_of_birth || 'N/A',
+                location: userData.location || 'N/A',
+                website_url: userData.website_url || '#',
+                website_display: userData.website_url || 'N/A',
+                posts_count: userData.posts_count || 0,
+                following_count: userData.following_count || 0,
+                followers_count: userData.followers_count || 0
+            };
+            
             const bannerImage = '../assets/images/kobeBannerHorizontal.jpg';
+            
+            const profileImg = typeof profileImageUrl !== 'undefined' && profileImageUrl ? profileImageUrl : 
+                              (userData.profile_picture || '../assets/images/profile-image-4.jpg');
             
             profileContainer.innerHTML = `
                 <h1 class="profile-panel__header">Profile</h1>
                 <div class="profile__banner">
                     <img src="${bannerImage}" alt="Banner Image" class="profile__banner-image" />
-                    <img src="${userData.profile_picture || '../assets/images/profile-image-4.jpg'}" alt="Profile Image" class="profile__profile-image" />
+                    <img src="${profileImg}" alt="Profile Image" class="profile__profile-image" />
                 </div>
                 <div class="profile-panel">
                     <div class="profile-panel__block">
                         <div class="profile-panel__info">
-                            <div class="profile-panel__heading">${userData.first_name} ${userData.last_name}</div>
-                            <div class="profile-panel__username">@${userData.username}</div>
+                            <div class="profile-panel__heading">${user.first_name} ${user.last_name}</div>
+                            <div class="profile-panel__username">@${user.username}</div>
                         </div>
                         <a href="settings.php" class="profile-panel__edit">EDIT</a>
                     </div>
@@ -60,12 +81,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         About:
                     </div>
                     <div class="profile-panel__about-text">
-                        ${userData.bio ? userData.bio : 'No bio available. Click EDIT to add a bio.'}
+                        ${user.bio ? user.bio : 'No bio available. Click EDIT to add a bio.'}
                     </div>
                     <div class="profile-panel__details">
-                        <div>Date of Birth: ${userData.date_of_birth || 'N/A'}</div>
-                        <div>Location: ${userData.location || 'N/A'}</div>
-                        <div>Website: <a href="${userData.website_url || '#'}" target="_blank">${userData.website_url || 'N/A'}</a></div>
+                        <div>Date of Birth: ${user.date_of_birth}</div>
+                        <div>Location: ${user.location}</div>
+                        <div>Website: <a href="${user.website_url}" target="_blank">${user.website_display}</a></div>
                     </div>
                 </div>
                 
@@ -116,9 +137,11 @@ document.addEventListener('DOMContentLoaded', () => {
             let postsHTML = `<h2 class="posts-header">Posts</h2>`;
             
             posts.forEach(post => {
+                const postProfilePic = post.profile_picture || '../assets/images/defaultProfilePic.png';
+                
                 postsHTML += `
                 <div class="post">
-                    <img class="post__author-logo" src="${post.profile_picture || '../assets/images/profile-image-4.jpg'}" />
+                    <img class="post__author-logo" src="${postProfilePic}" alt="${post.username}'s profile" />
                     <div class="post__main">
                         <div class="post__header">
                             <div class="post__author-name">
