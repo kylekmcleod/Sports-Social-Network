@@ -12,6 +12,10 @@ function checkIfLoggedIn() {
     return isset($_SESSION['user_id']);
 }
 
+function isLoggedIn() {
+    return checkIfLoggedIn();
+}
+
 function logoutUser() {
     session_unset();
     session_destroy();
