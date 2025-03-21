@@ -227,6 +227,7 @@
 
 .posts-header {
   margin: 20px 0 10px;
+  padding-left: 15px; 
   font-size: 1.3rem;
   font-weight: bold;
 }
