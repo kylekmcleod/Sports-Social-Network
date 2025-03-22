@@ -21,6 +21,12 @@ redirectIfNotLoggedIn();
     <link rel="stylesheet" href="../assets/css/settings/setting.css" />
     <link rel="stylesheet" href="../assets/css/profile/profile.css" />
     <script src="../assets/js/ajax/profile.js"></script>
+    <script>
+      // Add this helper function to fix image paths
+      function getImageUrl(imagePath) {
+        return `${window.location.origin}/cosc360/src/utils/getImage.php?file=${imagePath}`;
+      }
+    </script>
   </head>
   <body>
     <!-- Header -->
