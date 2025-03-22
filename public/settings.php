@@ -1,7 +1,7 @@
 <?php
 include_once('../src/controllers/auth.php');
-include_once(__DIR__ . '/../src/controllers/settingsController.php');
 redirectIfNotLoggedIn();
+include_once(__DIR__ . '/../src/controllers/settingsController.php');
 
 $userData = getUserData();
 

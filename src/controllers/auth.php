@@ -1,7 +1,9 @@
 <?php
-function redirectIfNotLoggedIn() {
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
+}
 
+function redirectIfNotLoggedIn() {
     if (!isset($_SESSION['user_id'])) {
         header("Location: /COSC360/public/login.php");
         exit();
