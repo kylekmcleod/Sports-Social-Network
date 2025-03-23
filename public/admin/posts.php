@@ -4,7 +4,7 @@ include_once('../../config/config.php');
 
 // Redirect if not logged in or not admin
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
-    header("Location: /COSC360/public/homepage.php");
+    header("Location: ../homepage.php");
     exit();
 }
 

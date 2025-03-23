@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (postsContainer) {
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://localhost/COSC360/src/controllers/PostsController.php', true);
+        xhr.open('GET', '../src/controllers/PostsController.php', true);
 
         xhr.onload = function() {
             if (xhr.status === 200) {

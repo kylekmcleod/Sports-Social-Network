@@ -24,7 +24,7 @@ redirectIfNotLoggedIn();
     <script>
       // Add this helper function to fix image paths
       function getImageUrl(imagePath) {
-        return `${window.location.origin}/cosc360/src/utils/getImage.php?file=${imagePath}`;
+        return `../src/utils/getImage.php?file=${imagePath}`;
       }
     </script>
   </head>

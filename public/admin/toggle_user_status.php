@@ -4,7 +4,7 @@ include_once('../../config/config.php');
 
 // Check if user is admin
 if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
-    header("Location: /COSC360/public/homepage.php");
+    header("Location: ../homepage.php");
     exit();
 }
 
