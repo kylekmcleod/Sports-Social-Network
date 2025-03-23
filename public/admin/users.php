@@ -81,6 +81,7 @@ $stmt->close();
                 echo '<div class="alert alert-success">';
                 if ($_GET['success'] == 'userdeleted') echo 'User deleted successfully.';
                 elseif ($_GET['success'] == 'userstatus') echo 'User status updated successfully.';
+                elseif ($_GET['success'] == 'adminstatus') echo 'Admin status updated successfully.';
                 echo '</div>';
             }
             
@@ -89,6 +90,7 @@ $stmt->close();
                 if ($_GET['error'] == 'notfound') echo 'User not found.';
                 elseif ($_GET['error'] == 'dberror') echo 'Database error occurred.';
                 elseif ($_GET['error'] == 'selfdelete') echo 'You cannot delete your own account from here.';
+                elseif ($_GET['error'] == 'selfadmin') echo 'You cannot change your own admin status.';
                 echo '</div>';
             }
             ?>
@@ -130,6 +132,14 @@ $stmt->close();
                                     <span class="badge <?php echo $user['is_admin'] ? 'bg-primary' : 'bg-secondary'; ?>">
                                         <?php echo $user['is_admin'] ? 'Yes' : 'No'; ?>
                                     </span>
+                                    <?php if ($user['user_id'] != $_SESSION['user_id']): ?>
+                                    <form method="POST" action="toggle_admin_status.php" style="display:inline;">
+                                        <input type="hidden" name="user_id" value="<?php echo $user['user_id']; ?>">
+                                        <button type="submit" class="btn btn-sm btn-outline-<?php echo $user['is_admin'] ? 'secondary' : 'primary'; ?>">
+                                            <?php echo $user['is_admin'] ? 'Remove Admin' : 'Make Admin'; ?>
+                                        </button>
+                                    </form>
+                                    <?php endif; ?>
                                 </td>
                                 <td><?php echo date('M d, Y', strtotime($user['created_at'])); ?></td>
                                 <td>
