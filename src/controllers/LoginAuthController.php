@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username_or_email = trim($_POST['usernameOrEmail']);
     $password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT user_id, username, password_hash FROM users WHERE username = ? OR email = ?");
+    $stmt = $conn->prepare("SELECT user_id, username, password_hash, is_admin FROM users WHERE username = ? OR email = ?");
     $stmt->bind_param("ss", $username_or_email, $username_or_email);
     $stmt->execute();
     $stmt->store_result();
@@ -16,12 +16,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "No user found with that username or email.";
         exit();
     }
-    $stmt->bind_result($user_id, $username, $stored_password_hash);
+    $stmt->bind_result($user_id, $username, $stored_password_hash, $is_admin);
     $stmt->fetch();
 
     if (password_verify($password, $stored_password_hash)) {
         $_SESSION['user_id'] = $user_id;
         $_SESSION['username'] = $username;
+        $_SESSION['is_admin'] = (bool)$is_admin; // Store admin status in session
+        if ($is_admin) {
+            $_SESSION['admin_logged_in'] = true; // Set admin_logged_in session variable
+        }
         header("Location: /COSC360/public/homepage.php");
         exit();
     } else {

@@ -28,6 +28,12 @@ include_once('../src/controllers/auth.php');
                 <img src="../assets/svg/setting.svg" class="sidebar-menu__item-icon" />
                 <span>Settings</span>
             </a>
+            <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true): ?>
+            <a href="admin/index.php" class="sidebar-menu__item">
+                <img src="../assets/svg/admin.svg" class="sidebar-menu__item-icon" />
+                <span>Admin</span>
+            </a>
+            <?php endif; ?>
             <a href="logout.php" class="sidebar-menu__item">
                 <img src="../assets/svg/logout.svg" class="sidebar-menu__item-icon" />
                 <span>Logout</span>
