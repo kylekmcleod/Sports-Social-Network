@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const bannerImage = '../assets/images/kobeBannerHorizontal.jpg';
 
             const profileImg = userData.profile_picture ? 
-            `${window.location.origin}/cosc360/src/utils/getImage.php?file=${userData.profile_picture}` : 
+            `../src/utils/getImage.php?file=${userData.profile_picture}` : 
             '../assets/images/defaultProfilePic.png';
 
             console.log('Profile image:', profileImg);
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             posts.forEach(post => {
                 postsHTML += `
                 <div class="post">
-                    <img class="post__author-logo" src="${typeof getImageUrl === 'function' ? getImageUrl(post.profile_picture) : `${window.location.origin}/cosc360/src/utils/getImage.php?file=${post.profile_picture}`}" />
+                    <img class="post__author-logo" src="${typeof getImageUrl === 'function' ? getImageUrl(post.profile_picture) : `../src/utils/getImage.php?file=${post.profile_picture}`}" />
                     <div class="post__main">
                         <div class="post__header">
                             <div class="post__author-name">

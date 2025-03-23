@@ -3,6 +3,6 @@ session_start();
 
 session_unset();
 session_destroy();
-header("Location: /COSC360/public/homepage.php");
+header("Location: homepage.php");
 exit();
 ?>

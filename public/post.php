@@ -235,9 +235,7 @@
           </div>
 
         </div>
-
         
-
       <!-- Right sidebar -->
       <div class="layout__right-sidebar-container">
         <div class="layout__right-sidebar">
