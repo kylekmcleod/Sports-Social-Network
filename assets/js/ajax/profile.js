@@ -131,7 +131,12 @@ document.addEventListener('DOMContentLoaded', () => {
             posts.forEach(post => {
                 postsHTML += `
                 <div class="post">
-                    <img class="post__author-logo" src="${typeof getImageUrl === 'function' ? getImageUrl(post.profile_picture) : `../src/utils/getImage.php?file=${post.profile_picture}`}" />
+                    <img class="post__author-logo" 
+                    src="${typeof getImageUrl === 'function' && post.profile_picture ? getImageUrl(post.profile_picture) : 
+                        post.profile_picture ? `../src/utils/getImage.php?file=${post.profile_picture}` : 
+                        '../assets/images/defaultProfilePic.png'}" 
+                    alt="Profile Picture" />
+
                     <div class="post__main">
                         <div class="post__header">
                             <div class="post__author-name">
