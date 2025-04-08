@@ -90,3 +90,21 @@
 .post__action-count {
     font-size: 13px;
 }
+
+.error-message {
+  text-align: center;
+  padding: 2rem;
+  background-color: #fff;
+}
+
+.error-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #b8462a;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.error-link:hover {
+  text-decoration: underline;
+}
