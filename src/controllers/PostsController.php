@@ -26,29 +26,51 @@ include_once('../../config/config.php');
 
 $conn = getDBConnection();
 
+$tags = isset($_GET['tags']) ? explode(',', $_GET['tags']) : [];
+
 $sql = "
     SELECT posts.*, users.username, users.profile_picture
     FROM posts
     INNER JOIN users ON posts.user_id = users.user_id
-    ORDER BY posts.created_at DESC
 ";
-$result = $conn->query($sql);
+
+if (!empty($tags)) {
+    $placeholders = str_repeat('?,', count($tags) - 1) . '?';
+    $sql .= " WHERE (";
+    $conditions = array_map(function($tag) {
+        return "FIND_IN_SET(?, posts.tags) > 0";
+    }, $tags);
+    $sql .= implode(" OR ", $conditions) . ")";
+}
+
+$sql .= " ORDER BY posts.created_at DESC";
+
+$stmt = $conn->prepare($sql);
+
+if (!empty($tags)) {
+    $types = str_repeat('s', count($tags));
+    $stmt->bind_param($types, ...$tags);
+}
+
+$stmt->execute();
+$result = $stmt->get_result();
 
 $postsArray = [];
 if ($result->num_rows > 0) {
     while ($post = $result->fetch_assoc()) {
         $postsArray[] = [
             'username' => $post['username'],
-            'content'  => $post['content'],
+            'content' => $post['content'],
             'created_at' => $post['created_at'],
-            'id' => $post['post_id'],
-            'profile_picture' => $post['profile_picture']
+            'profile_picture' => $post['profile_picture'],
+            'tags' => $post['tags']
         ];
     }
 }
 
+$stmt->close();
 $conn->close();
+
 header('Content-Type: application/json');
 echo json_encode($postsArray);
-
 ?>

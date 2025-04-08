@@ -8,7 +8,7 @@ include_once('../src/controllers/auth.php');
             <img src="../assets/svg/home.svg" class="sidebar-menu__item-icon" />
             <span>Home</span>
         </a>
-        <a href="" class="sidebar-menu__item">
+        <a href="explorepage.php" class="sidebar-menu__item">
             <img src="../assets/svg/explore.svg" class="sidebar-menu__item-icon" />
             <span>Explore</span>
         </a>

@@ -1,0 +1,29 @@
+.explore-tags {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.explore-tags__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag-filter-button {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid #1da1f2;
+    background: transparent;
+    color: #1da1f2;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tag-filter-button.selected {
+    background: #1da1f2;
+    color: white;
+}
+
+.tag-filter-button:hover {
+    background: rgba(29, 161, 242, 0.1);
+}
