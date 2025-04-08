@@ -16,49 +16,57 @@ document.addEventListener('DOMContentLoaded', function() {
                     posts.forEach(function(post) {
                         const postElement = document.createElement('div');
                         postElement.classList.add('post');
-                        postElement.innerHTML = `
-                            <img class="post__author-logo" src="../assets/images/profile-image-1.jpg" />
-                            <div class="post__main">
-                                <div class="post__header">
-                                    <div class="post__author-name">@${post.username}&nbsp;&nbsp;&#8226;</div>
-                                    <div class="post__publish-time">
-                                        ${(() => {
-                                            const postDate = new Date(post.created_at);
-                                            const currentYear = new Date().getFullYear();
-                                            
-                                            const options = {
-                                                month: 'short',
-                                                day: 'numeric',
-                                                hour: 'numeric',
-                                                minute: 'numeric',
-                                            };
-                                            
-                                            // If the post year is different from the current year, include the year
-                                            if (postDate.getFullYear() !== currentYear) {
-                                                options.year = 'numeric';
-                                            }
-
-                                            return postDate.toLocaleString('en-US', options);
-                                        })()}
+                        posts.forEach(function(post) {
+                            const postElement = document.createElement('div');
+                            postElement.classList.add('post');
+                        
+                            postElement.innerHTML = `
+                                <img class="post__author-logo" src="../assets/images/profile-image-1.jpg" />
+                                <div class="post__main">
+                                    <div class="post__header">
+                                        <div class="post__author-name">@${post.username}&nbsp;&nbsp;&#8226;</div>
+                                        <div class="post__publish-time">
+                                            ${(() => {
+                                                const postDate = new Date(post.created_at);
+                                                const currentYear = new Date().getFullYear();
+                        
+                                                const options = {
+                                                    month: 'short',
+                                                    day: 'numeric',
+                                                    hour: 'numeric',
+                                                    minute: 'numeric',
+                                                };
+                        
+                                                if (postDate.getFullYear() !== currentYear) {
+                                                    options.year = 'numeric';
+                                                }
+                        
+                                                return postDate.toLocaleString('en-US', options);
+                                            })()}
+                                        </div>
                                     </div>
-
-
-                                </div>
-                                <div class="post__content">
-                                    ${post.content}
-                                </div>
-                                <div class="post__actions">
-                                    <div class="post__action-button">
-                                        <img src="../assets/svg/comment.svg" class="post__action-icon" />
-                                        <span class="post__action-count">24</span>
+                                    <div class="post__content">
+                                        ${post.content}
                                     </div>
-                                    <div class="post__action-button">
-                                        <img src="../assets/svg/heart.svg" class="post__action-icon" />
-                                        <span class="post__action-count">482</span>
+                                    <div class="post__actions">
+                                        <div class="post__action-button">
+                                            <img src="../assets/svg/comment.svg" class="post__action-icon" />
+                                            <span class="post__action-count">24</span>
+                                        </div>
+                                        <div class="post__action-button">
+                                            <img src="../assets/svg/heart.svg" class="post__action-icon" />
+                                            <span class="post__action-count">482</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        `;
+                            `;
+                            postElement.addEventListener('click', () => {
+                                window.location.href = `../public/post.php?id=${post.id}`;
+                            });
+                            postElement.style.cursor = 'pointer';
+                            postsContainer.appendChild(postElement);
+                        });
+                        
                         postsContainer.appendChild(postElement);
                     });
                 } else {

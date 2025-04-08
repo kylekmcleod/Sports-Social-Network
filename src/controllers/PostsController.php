@@ -40,7 +40,8 @@ if ($result->num_rows > 0) {
         $postsArray[] = [
             'username' => $post['username'],
             'content'  => $post['content'],
-            'created_at' => $post['created_at']
+            'created_at' => $post['created_at'],
+            'id' => $post['post_id']
             
         ];
     }
