@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once('../../config/config.php');
-include_once('auth.php');
+include_once(__DIR__ . '/../../config/config.php');
+include_once(__DIR__ . '/auth.php');
 $conn = getDBConnection();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['content']) && !empty($_POST['content'])) {
