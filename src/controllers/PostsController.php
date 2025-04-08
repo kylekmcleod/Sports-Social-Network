@@ -27,7 +27,7 @@ include_once('../../config/config.php');
 $conn = getDBConnection();
 
 $sql = "
-    SELECT posts.*, users.username
+    SELECT posts.*, users.username, users.profile_picture
     FROM posts
     INNER JOIN users ON posts.user_id = users.user_id
     ORDER BY posts.created_at DESC
@@ -41,8 +41,8 @@ if ($result->num_rows > 0) {
             'username' => $post['username'],
             'content'  => $post['content'],
             'created_at' => $post['created_at'],
-            'id' => $post['post_id']
-            
+            'id' => $post['post_id'],
+            'profile_picture' => $post['profile_picture']
         ];
     }
 }
