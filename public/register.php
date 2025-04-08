@@ -34,7 +34,6 @@
                     <form action="../src/controllers/RegisterAuthController.php" method="POST" id="registerForm" enctype="multipart/form-data">
                         <div class="mb-3 row">
                             <div class="profile-upload-container text-center mb-3">
-                                <!-- Profile Image Preview -->
                                 <img id="profile-preview" 
                                      src="https://t3.ftcdn.net/jpg/09/64/89/18/360_F_964891898_SuTIP6H2AVZkBuUG2cIpP9nvdixORKpM.jpg" 
                                      alt="Profile Image"
@@ -42,7 +41,6 @@
                                      style="width: 120px; height: 120px; object-fit: cover; border: 2px solid #ccc;"/>
                             </div>
 
-                            <!-- Hidden File Input -->
                             <input type="file" id="profile-upload" name="profileImage" accept="image/*" style="display: none;" />
 
                             <div class="col-6">
@@ -72,7 +70,6 @@
                             <div id="passwordError" class="text-danger" style="display:none;">Password is required.</div>
                         </div>
                         
-                        <!-- Upload Profile Button -->
                         <button type="button" class="btn btn-outline-grey w-100 mb-2" id="uploadProfileBtn">Upload Profile Image</button>
                         
                         <button type="submit" name="register" class="btn w-100 register-btn">SIGN UP</button>
