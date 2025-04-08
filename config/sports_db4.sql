@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2025 at 09:54 PM
+-- Generation Time: Apr 08, 2025 at 10:02 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -137,7 +137,8 @@ INSERT INTO `posts` (`post_id`, `user_id`, `content`, `image_url`, `created_at`,
 (90, 27, 'Juts claimed the username @kylekmcleod before it is too late. Gonna be worth big bucks in the future.', NULL, '2025-04-08 19:52:17', '2025-04-08 19:52:17', 0, 0),
 (91, 25, 'Heard that batman is an admin on this website. He has so much power!!!!!', NULL, '2025-04-08 19:53:17', '2025-04-08 19:53:17', 0, 0),
 (92, 25, 'You guys watch march madness though??', NULL, '2025-04-08 19:53:44', '2025-04-08 19:53:44', 0, 0),
-(93, 26, 'I don\'t watch sports llama. My purpose is to protect sports social.', NULL, '2025-04-08 19:54:09', '2025-04-08 19:54:09', 0, 0);
+(93, 26, 'I don\'t watch sports llama. My purpose is to protect sports social.', NULL, '2025-04-08 19:54:09', '2025-04-08 19:54:09', 0, 0),
+(94, 28, 'Flint and steel', NULL, '2025-04-08 20:02:09', '2025-04-08 20:02:09', 0, 0);
 
 --
 -- Triggers `posts`
@@ -194,7 +195,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `username`, `email`, `password_hash`, `first_name`, `last_name`, `profile_picture`, `bio`, `created_at`, `updated_at`, `followers_count`, `following_count`, `posts_count`, `is_admin`, `is_active`) VALUES
 (25, 'llama', 'llama@gmail.com', '$2y$10$.77Lk78ekKUhZip0JRQJaeupxreNCiEq5oEbwJaj9cxx.ZvLlFuCq', 'Llama', 'Man', 'uploads/1744141668_1744141529_1742617909_Llama3-1.jpg', NULL, '2025-04-08 19:47:48', '2025-04-08 19:53:44', 0, 0, 3, 0, 1),
 (26, 'batman', 'batman@gmail.com', '$2y$10$1oqQI8q4AehlkizLKvFHQumcvbqB85GFEIjFcpo0sjhBGOQ/zawqe', 'Bruce', 'Wayne', 'uploads/1744141784_the-batman-part-ii-heres-when-robert-pattinson-starrer-sequel-will-release.webp', NULL, '2025-04-08 19:49:44', '2025-04-08 19:54:09', 0, 0, 3, 1, 1),
-(27, 'kylekmcleod', 'kylekmcleod1@gmail.com', '$2y$10$Rn8TXCpkepCwRa8W01jcZ.JXbsY3k3b6emZZsYqrvz8lDMJRCgXBe', 'Kyle', 'McLeod', 'uploads/1744141916_AMCM_Chicken_Jockey.jpg', NULL, '2025-04-08 19:51:56', '2025-04-08 19:52:17', 0, 0, 1, 0, 1);
+(27, 'kylekmcleod', 'kylekmcleod1@gmail.com', '$2y$10$Rn8TXCpkepCwRa8W01jcZ.JXbsY3k3b6emZZsYqrvz8lDMJRCgXBe', 'Kyle', 'McLeod', 'uploads/1744141916_AMCM_Chicken_Jockey.jpg', NULL, '2025-04-08 19:51:56', '2025-04-08 19:52:17', 0, 0, 1, 0, 1),
+(28, 'steve', 'steve@gmail.com', '$2y$10$mzYqqu5gW6547AGUXT7.XuvmlDxaVE0vzdzJjY5tT0FCP4A4pks4O', 'Jack', 'Black', 'uploads/1744142516_you-know-you-just-cant-throw-a-blue-shirt-on-jack-black-and-v0-jtvnai5r40nd1.jpg', NULL, '2025-04-08 20:01:56', '2025-04-08 20:02:09', 0, 0, 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -326,7 +328,7 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `profiles`
@@ -338,7 +340,7 @@ ALTER TABLE `profiles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `user_activity`
