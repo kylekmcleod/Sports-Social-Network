@@ -9,8 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['content']) && !empty($
         $content = $_POST['content'];
         $user_id = $_SESSION['user_id'];
         
-        $stmt = $conn->prepare("INSERT INTO posts (user_id, content, created_at) VALUES (?, ?, NOW())");
-        $stmt->bind_param("is", $user_id, $content);
+        $tags = isset($_POST['tags']) ? implode(',', $_POST['tags']) : null;
+        
+        $stmt = $conn->prepare("INSERT INTO posts (user_id, content, tags, created_at) VALUES (?, ?, ?, NOW())");
+        $stmt->bind_param("iss", $user_id, $content, $tags);
         
         if ($stmt->execute()) {
             header("Location: " . $_SERVER['HTTP_REFERER']);

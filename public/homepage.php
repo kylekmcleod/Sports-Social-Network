@@ -56,13 +56,23 @@ session_start();
               maxlength="280"
               name="content"
             ></textarea>
+            <div class="post-something__tags">
+              <div class="post-something__tags-container">
+                <button type="button" class="tag-button" data-value="football">Football</button>
+                <button type="button" class="tag-button" data-value="basketball">Basketball</button>
+                <button type="button" class="tag-button" data-value="soccer">Soccer</button>
+                <button type="button" class="tag-button" data-value="tennis">Tennis</button>
+                <button type="button" class="tag-button" data-value="baseball">Baseball</button>
+                <button type="button" class="tag-button" data-value="hockey">Hockey</button>
+              </div>
+              <input type="hidden" name="tags[]" id="selected-tags" value="">
+            </div>
             <div class="post-something__actions">
               <span class="post-something__char-count">280</span>
               <button type="submit" class="post-something__button">Post</button>
             </div>
           </div>
         </form>
-
       <?php
       } else {
       ?>
