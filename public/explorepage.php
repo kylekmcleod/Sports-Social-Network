@@ -43,19 +43,20 @@ session_start();
         include_once('../assets/components/leftSideBar.php');
       ?>
 
-      <!-- Main content -->
-        <div class="layout__main">
-    <div class="explore-tags">
-        <div class="explore-tags__container">
-        <button type="button" class="tag-filter-button" data-value="football">Football</button>
-        <button type="button" class="tag-filter-button" data-value="basketball">Basketball</button>
-        <button type="button" class="tag-filter-button" data-value="soccer">Soccer</button>
-        <button type="button" class="tag-filter-button" data-value="tennis">Tennis</button>
-        <button type="button" class="tag-filter-button" data-value="baseball">Baseball</button>
-        <button type="button" class="tag-filter-button" data-value="hockey">Hockey</button>
+        <!-- Main content -->
+    <div class="layout__main">
+        <div class="explore-tags">
+            <h2 class="explore-tags__heading">Explore posts by tag</h2>
+            <div class="explore-tags__container">
+                <button type="button" class="tag-filter-button" data-value="football">Football</button>
+                <button type="button" class="tag-filter-button" data-value="basketball">Basketball</button>
+                <button type="button" class="tag-filter-button" data-value="soccer">Soccer</button>
+                <button type="button" class="tag-filter-button" data-value="tennis">Tennis</button>
+                <button type="button" class="tag-filter-button" data-value="baseball">Baseball</button>
+                <button type="button" class="tag-filter-button" data-value="hockey">Hockey</button>
+            </div>
         </div>
-    </div>
-    <div id="posts-container"></div>
+        <div id="posts-container"></div>
     </div>
 
       <!-- Right sidebar -->

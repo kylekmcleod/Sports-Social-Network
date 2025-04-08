@@ -27,3 +27,11 @@
 .tag-filter-button:hover {
     background: rgba(29, 161, 242, 0.1);
 }
+
+.explore-tags__heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+}

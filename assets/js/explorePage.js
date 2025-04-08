@@ -2,6 +2,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.tag-filter-button');
     const selectedTags = new Set();
     
+    const getProfilePicturePath = (profilePicture) => {
+        if (!profilePicture) {
+            return '../assets/images/defaultProfilePic.png';
+        }
+        return profilePicture.startsWith('http') 
+            ? profilePicture 
+            : `../src/utils/getImage.php?file=${profilePicture}`;
+    };
+
     const fetchPosts = async () => {
         try {
             const queryString = selectedTags.size > 0 
@@ -28,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             postsContainer.innerHTML = posts.map(post => `
                 <div class="post">
                     <img class="post__author-logo" 
-                         src="${post.profile_picture || '../assets/images/defaultProfilePic.png'}" 
+                         src="${getProfilePicturePath(post.profile_picture)}" 
                          alt="${post.username}'s profile picture">
                     <div class="post__main">
                         <div class="post__header">
