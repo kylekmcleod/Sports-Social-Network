@@ -1,0 +1,14 @@
+Normal Accounts:
+Email: llama@gmail.com
+Pass: llama
+
+Email: kylekmcleod1@gmail.com
+Pass: kyle
+
+
+
+
+
+Admin Accounts:
+Email: batman@gmail.com
+Pass: bruce
