@@ -130,13 +130,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             posts.forEach(post => {
                 postsHTML += `
-                <div class="post">
+                <div class="post" data-post-id="${post.post_id}">
                     <img class="post__author-logo" 
                     src="${typeof getImageUrl === 'function' && post.profile_picture ? getImageUrl(post.profile_picture) : 
                         post.profile_picture ? `../src/utils/getImage.php?file=${post.profile_picture}` : 
                         '../assets/images/defaultProfilePic.png'}" 
                     alt="Profile Picture" />
-
+            
                     <div class="post__main">
                         <div class="post__header">
                             <div class="post__author-name">
@@ -166,8 +166,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 `;
             });
-
+            
             userPostsContainer.innerHTML = postsHTML;
+            document.querySelectorAll('.post').forEach(postElement => {
+                const postId = postElement.dataset.postId;
+                
+                postElement.addEventListener('click', () => {
+                    window.location.href = `../public/post.php?id=${postId}`;
+                });
+                postElement.style.cursor = 'pointer';
+            });
+            
         })
         .catch(error => {
             console.error('Error loading profile:', error);
