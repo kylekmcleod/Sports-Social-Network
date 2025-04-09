@@ -35,6 +35,12 @@ function fetchAndDisplayPosts() {
             }
 
             posts.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+            
+            const newPosts = posts.filter(post => !existingPostIds.has(post.id));
+            if (newPosts.length > 0 && existingPostIds.size > 0) {
+                showNewPostAlert(newPosts.length);
+            }
+            
             postsContainer.innerHTML = '';
             
             posts.forEach(function (post) {
@@ -106,6 +112,42 @@ function fetchAndDisplayPosts() {
     };
 
     xhr.send();
+}
+
+function showNewPostAlert(count) {
+    let alertElement = document.getElementById('new-post-alert');
+    if (!alertElement) {
+        alertElement = document.createElement('div');
+        alertElement.id = 'new-post-alert';
+        alertElement.style.position = 'fixed';
+        alertElement.style.top = '30px';
+        alertElement.style.right = '30px';
+        alertElement.style.backgroundColor = '#1DA1F2';
+        alertElement.style.color = 'white';
+        alertElement.style.padding = '10px 15px';
+        alertElement.style.borderRadius = '5px';
+        alertElement.style.zIndex = '1000';
+        alertElement.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+        alertElement.style.cursor = 'pointer';
+        document.body.appendChild(alertElement);
+        
+        alertElement.addEventListener('click', () => {
+            alertElement.style.display = 'none';
+        });
+    }
+    
+    let message;
+    if (count === 1) {
+        message = '1 new post available!';
+    } else {
+        message = `${count} new posts available!`;
+    }
+    alertElement.textContent = message;
+    alertElement.style.display = 'block';
+    
+    setTimeout(() => {
+        alertElement.style.display = 'none';
+    }, 5000);
 }
 
     fetchAndDisplayPosts();
