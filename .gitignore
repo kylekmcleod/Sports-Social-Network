@@ -37,6 +37,3 @@ Thumbs.db
 
 # Ignore session files
 /sessions/
-
-# Ignore user uploads
-/uploads/
