@@ -63,7 +63,8 @@ if ($result->num_rows > 0) {
             'content' => $post['content'],
             'created_at' => $post['created_at'],
             'profile_picture' => $post['profile_picture'],
-            'tags' => $post['tags']
+            'tags' => $post['tags'],
+            'id' => $post['post_id'],
         ];
     }
 }
