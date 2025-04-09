@@ -47,11 +47,5 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
             return;
         }
-
-        if (selectedTags.size === 0) {
-            alert("Please select at least one tag for your post!");
-            event.preventDefault();
-            return;
-        }
     });
 });
