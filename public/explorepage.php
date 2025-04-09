@@ -214,7 +214,6 @@ session_start();
       include_once('../assets/components/mobileNav.php');
     ?>
     <script src="../assets/js/postSomething.js"></script>
-    <script src="../assets/js/ajax/posts.js"></script>
     <script src="../assets/js/ajax/addPost.js"></script>
     <script src="../assets/js/explorePage.js"></script>
   </body>
