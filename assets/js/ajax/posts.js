@@ -3,12 +3,14 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     const postsContainer = document.getElementById('posts-container');
+    let existingPostIds = new Set();
 
     if (!postsContainer) {
         console.error('Error: posts-container element not found.');
         return;
     }
 
+function fetchAndDisplayPosts() {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', '../src/controllers/PostsController.php', true);
 
@@ -17,15 +19,30 @@ document.addEventListener('DOMContentLoaded', function () {
             const posts = JSON.parse(xhr.responseText);
 
             if (posts.length === 0) {
-                const noPostsMessage = document.createElement('div');
-                noPostsMessage.textContent = "No posts found.";
-                postsContainer.appendChild(noPostsMessage);
+                if (!document.getElementById("no-posts-message")) {
+                    postsContainer.innerHTML = '';
+                    const noPostsMessage = document.createElement('div');
+                    noPostsMessage.textContent = "No posts found.";
+                    noPostsMessage.id = "no-posts-message";
+                    postsContainer.appendChild(noPostsMessage);
+                }
                 return;
             }
 
+            const noPostsMessage = document.getElementById("no-posts-message");
+            if (noPostsMessage) {
+                postsContainer.removeChild(noPostsMessage);
+            }
+
+            posts.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+            postsContainer.innerHTML = '';
+            
             posts.forEach(function (post) {
+                existingPostIds.add(post.id);
+
                 const postElement = document.createElement('div');
                 postElement.classList.add('post');
+                postElement.dataset.postId = post.id;
 
                 const profilePicSrc = post.profile_picture
                     ? `../src/utils/getImage.php?file=${post.profile_picture}`
@@ -79,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 postElement.style.cursor = 'pointer';
                 postsContainer.appendChild(postElement);
             });
-
         } else {
             console.error('Error fetching posts:', xhr.status, xhr.statusText);
         }
@@ -90,4 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     xhr.send();
+}
+
+    fetchAndDisplayPosts();
+    setInterval(fetchAndDisplayPosts, 2000);
 });
