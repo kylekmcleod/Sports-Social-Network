@@ -1,3 +1,22 @@
+<?php
+require_once('../src/controllers/GetPostWithComments.php');
+session_start();
+
+$post_id = $_GET['id'] ?? null;
+if (!$post_id) {
+    header('Location: homepage.php');
+    exit;
+}
+
+$data = getPostWithComments($post_id);
+$post = $data['post'];
+$comments = $data['comments'];
+
+if (!$post) {
+    header('Location: homepage.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -34,12 +53,63 @@
     </header>
 
     <div class="layout">
-      <?php
-        include_once('../assets/components/leftSideBar.php');
-      ?>
+      <?php include_once('../assets/components/leftSideBar.php'); ?>
 
-      <!-- Main content, content gets injected with AJAX here -->
+      <!-- Main content -->
       <div class="layout__main">
+        <!-- Original Post -->
+        <div class="post">
+            <img class="post__author-logo" 
+                src="<?= $post['profile_picture'] ? '../src/utils/getImage.php?file=' . $post['profile_picture'] : '../assets/images/defaultProfilePic.png' ?>" />
+            <div class="post__main">
+                <div class="post__header">
+                    <div class="post__author-name"><?= htmlspecialchars($post['username']) ?></div>
+                    <div class="post__author-slug">@<?= strtolower(str_replace(' ', '_', $post['username'])) ?></div>
+                    <div class="post__publish-time"><?= formatTimeAgo($post['created_at']) ?></div>
+                </div>
+                <div class="post__content"><?= htmlspecialchars($post['content']) ?></div>
+            </div>
+        </div>
+
+        <!-- Comment Form -->
+        <?php if (isset($_SESSION['user_id'])): ?>
+        <div class="post-something">
+            <img class="post-something__author-logo" src="../assets/images/defaultProfilePic.png" />
+            <div class="post-something__content">
+                <form action="../src/controllers/AddCommentController.php" method="POST" class="post-something__form">
+                    <textarea 
+                        class="post-something__input" 
+                        placeholder="Post a reply..."
+                        name="content"
+                        maxlength="280"
+                        required
+                    ></textarea>
+                    <input type="hidden" name="post_id" value="<?= $post_id ?>">
+                    <div class="post-something__actions">
+                        <span class="post-something__char-count">280</span>
+                        <button type="submit" class="post-something__button">Reply</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <?php endif; ?>
+
+        <!-- Comments -->
+        <div id="comments-container">
+            <?php foreach ($comments as $comment): ?>
+            <div class="post">
+                <img class="post__author-logo" 
+                    src="<?= $comment['profile_picture'] ? '../src/utils/getImage.php?file=' . $comment['profile_picture'] : '../assets/images/defaultProfilePic.png' ?>" />
+                <div class="post__main">
+                    <div class="post__header">
+                        <div class="post__author-name"><?= htmlspecialchars($comment['username']) ?></div>
+                        <div class="post__publish-time"><?= formatTimeAgo($comment['created_at']) ?></div>
+                    </div>
+                    <div class="post__content"><?= htmlspecialchars($comment['content']) ?></div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
       </div>
         
       <!-- Right sidebar -->
@@ -192,11 +262,15 @@
       </div>
     </div>
 
-    <!-- Mobile nav without logo -->
-    <?php
-      include_once('../assets/components/mobileNav.php');
-    ?>
-    <script src="../assets/js/postSomething.js"></script>
-    <script src="../assets/js/ajax/specificPost.js"></script>
+    <?php include_once('../assets/components/mobileNav.php'); ?>
+    
+    <script>
+        document.querySelector('.post-something__input')?.addEventListener('input', function() {
+            const remaining = 280 - this.value.length;
+            const counter = document.querySelector('.post-something__char-count');
+            counter.textContent = remaining;
+            counter.classList.toggle('post-something__char-count--limit', remaining < 0);
+        });
+    </script>
   </body>
 </html>
