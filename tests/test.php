@@ -13,8 +13,8 @@ $output = ob_get_clean();
 
 echo "Output: " . htmlspecialchars($output) . "<br>";
 if (strpos($output, 'Error') !== false || empty($output)) {
-    echo "✅ Test passed.<br><br>";
+    echo "Test passed.<br><br>";
 } else {
-    echo "❌ Test failed.<br><br>";
+    echo "Test failed.<br><br>";
 }
 ?>
