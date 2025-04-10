@@ -20,6 +20,10 @@ include_once('../../src/controllers/auth.php');
             <img src="/COSC360/assets/svg/explore.svg" class="sidebar-menu__item-icon" />
             <span>Manage Posts</span>
         </a>
+        <a href="/COSC360/public/admin/reports.php" class="sidebar-menu__item">
+            <img src="/COSC360/assets/svg/stats.svg" class="sidebar-menu__item-icon" />
+            <span>Usage Reports</span>
+        </a>
         <a href="/COSC360/public/profile.php" class="sidebar-menu__item">
             <img src="/COSC360/assets/svg/profile.svg" class="sidebar-menu__item-icon" />
             <span>My Profile</span>
