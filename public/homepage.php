@@ -145,3 +145,65 @@ require_once('../config/config.php');
     
     function loadPosts() {
       fetch('../src/controllers/PostsController.php')
+        .then(response => response.json())
+        .then(posts => {
+          displayPosts(posts);
+        })
+        .catch(error => console.error('Error loading posts:', error));
+    }
+    
+    function displayPosts(posts) {
+      const container = document.getElementById('posts-container');
+      if (posts.length === 0) {
+        container.innerHTML = '<div class="no-posts">No posts found</div>';
+        return;
+      }
+      
+      let postsHTML = '';
+      posts.forEach(post => {
+        postsHTML += createPostHTML(post);
+      });
+      
+      container.innerHTML = postsHTML;
+    }
+    
+    function createPostHTML(post) {
+      return `
+        <div class="post" data-post-id="${post.id}">
+          <img class="post__author-logo" 
+               src="${post.profile_picture ? '../src/utils/getImage.php?file=' + post.profile_picture : '../assets/images/defaultProfilePic.png'}" 
+               alt="Profile Picture" />
+          
+          <div class="post__main">
+            <div class="post__header">
+              <div class="post__author-name">
+                ${post.username}
+              </div>
+              <div class="post__author-slug">
+                @${post.username}
+              </div>
+              <div class="post__publish-time">
+                ${post.time_display}
+              </div>
+            </div>
+            <div class="post__content">
+              ${post.content}
+            </div>
+            
+            <div class="post__actions">
+              <div class="post__action-button">
+                <img src="../assets/svg/comment.svg" class="post__action-icon" />
+                <span class="post__action-count">0</span>
+              </div>
+            </div>
+            
+            <div class="post__timestamp">
+              ${post.formatted_date}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
