@@ -105,6 +105,7 @@ try {
                 'content' => $post['content'],
                 'created_at' => $post['created_at'],
                 'time_display' => $time_display,
+                'formatted_date' => date('M d, Y h:i A', strtotime($post['created_at'])),
                 'comment_count' => $comment_count,
                 'like_count' => $like_count
             ];

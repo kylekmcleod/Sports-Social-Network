@@ -162,6 +162,15 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span class="post__action-count">${post.like_count}</span>
                             </div>
                         </div>
+                        <div class="post__timestamp">
+                            ${new Date(post.created_at).toLocaleString('en-US', {
+                                year: 'numeric',
+                                month: 'short',
+                                day: 'numeric',
+                                hour: '2-digit',
+                                minute: '2-digit'
+                            })}
+                        </div>
                     </div>
                 </div>
                 `;

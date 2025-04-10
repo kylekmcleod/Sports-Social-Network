@@ -58,6 +58,21 @@ $result = $stmt->get_result();
 $postsArray = [];
 if ($result->num_rows > 0) {
     while ($post = $result->fetch_assoc()) {
+        // Calculate relative time display
+        $time_diff = time() - strtotime($post['created_at']);
+        if ($time_diff < 60) {
+            $time_display = $time_diff . "s";
+        } elseif ($time_diff < 3600) {
+            $time_display = floor($time_diff / 60) . "m";
+        } elseif ($time_diff < 86400) {
+            $time_display = floor($time_diff / 3600) . "h " . floor(($time_diff % 3600) / 60) . "m";
+        } else {
+            $time_display = date("M j", strtotime($post['created_at']));
+        }
+        
+        $post['time_display'] = $time_display;
+        $post['formatted_date'] = date('M d, Y h:i A', strtotime($post['created_at']));
+        
         $postsArray[] = [
             'username' => $post['username'],
             'content' => $post['content'],
@@ -65,6 +80,8 @@ if ($result->num_rows > 0) {
             'profile_picture' => $post['profile_picture'],
             'tags' => $post['tags'],
             'id' => $post['post_id'],
+            'time_display' => $post['time_display'],
+            'formatted_date' => $post['formatted_date'],
         ];
     }
 }

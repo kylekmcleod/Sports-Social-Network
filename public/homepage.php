@@ -96,6 +96,32 @@ require_once('../config/config.php');
         ?>
         
       <!-- posts container -->
+      <!-- Post template (will be cloned by JavaScript) -->
+      <template id="post-template">
+        <div class="post">
+          <img class="post__author-logo" src="" alt="Profile Picture" />
+          <div class="post__main">
+            <div class="post__header">
+              <div class="post__author-name"></div>
+              <div class="post__author-slug"></div>
+              <div class="post__publish-time"></div>
+            </div>
+            <div class="post__content"></div>
+            <div class="post__actions">
+              <div class="post__action-button">
+                <img src="../assets/svg/comment.svg" class="post__action-icon" />
+                <span class="post__action-count">0</span>
+              </div>
+              <div class="post__action-button like-button">
+                <img src="../assets/svg/heart.svg" class="post__action-icon" />
+                <span class="post__action-count">0</span>
+              </div>
+            </div>
+            <div class="post__timestamp"></div>
+          </div>
+        </div>
+      </template>
+
       <div id="posts-container"></div>
     </div>
 
@@ -111,5 +137,11 @@ require_once('../config/config.php');
   <script src="../assets/js/postSomething.js"></script>
   <script src="../assets/js/ajax/posts.js"></script>
   <script src="../assets/js/ajax/addPost.js"></script>
-</body>
-</html>
+  <script>
+    // Load posts when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      loadPosts();
+    });
+    
+    function loadPosts() {
+      fetch('../src/controllers/PostsController.php')

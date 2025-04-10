@@ -10,20 +10,20 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
+    // Event delegation for post clicks
+    document.getElementById('posts-container').addEventListener('click', function(e) {
+        const postElement = e.target.closest('.post');
+        if (postElement) {
+            const postId = postElement.dataset.postId;
+            if (postId) {
+                window.location.href = `post.php?id=${postId}`;
+            }
+        }
+    });
+
 function fetchAndDisplayPosts() {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', '../src/controllers/PostsController.php', true);
-
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            const posts = JSON.parse(xhr.responseText);
-
-            if (posts.length === 0) {
-                if (!document.getElementById("no-posts-message")) {
-                    postsContainer.innerHTML = '';
-                    const noPostsMessage = document.createElement('div');
-                    noPostsMessage.textContent = "No posts found.";
-                    noPostsMessage.id = "no-posts-message";
                     postsContainer.appendChild(noPostsMessage);
                 }
                 return;
@@ -45,8 +45,7 @@ function fetchAndDisplayPosts() {
             
             posts.forEach(function (post) {
                 existingPostIds.add(post.id);
-                const postElement = document.createElement('div');
-                postElement.innerHTML = renderPost(post);
+                const postElement = createPostElement(post);
                 postElement.addEventListener('click', () => {
                     window.location.href = `../public/post.php?id=${post.id}`;
                 });
@@ -176,6 +175,49 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+// Update the post creation function to include timestamp
+function createPostElement(post) {
+    const postElement = document.createElement('div');
+    postElement.className = 'post';
+    postElement.dataset.postId = post.id;
+
+    // Format the date for display
+    const postDate = new Date(post.created_at);
+    const formattedDate = postDate.toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+
+    postElement.innerHTML = `
+        <img class="post__author-logo" 
+            src="${post.profile_picture ? '../src/utils/getImage.php?file=' + post.profile_picture : '../assets/images/defaultProfilePic.png'}" 
+            alt="Profile Picture" />
+        <div class="post__main">
+            <div class="post__header">
+                <div class="post__author-name">
+                    ${post.username}
+                </div>
+                <div class="post__author-slug">
+                    @${post.username}
+                </div>
+            </div>
+            <div class="post__content">
+                ${post.content}
+            </div>
+            <div class="post__timestamp">
+                ${formattedDate}
+            </div>
+        </div>
+    `;
+
+    // ...existing code...
+
+    return postElement;
 }
 
     fetchAndDisplayPosts();

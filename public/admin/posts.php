@@ -118,7 +118,7 @@ $stmt->close();
                                         <?php echo nl2br(htmlspecialchars(substr($post['content'], 0, 100) . (strlen($post['content']) > 100 ? '...' : ''))); ?>
                                     </div>
                                 </td>
-                                <td><?php echo date('M d, Y H:i', strtotime($post['created_at'])); ?></td>
+                                <td><?php echo date('M d, Y h:i A', strtotime($post['created_at'])); ?></td>
                                 <td>
                                     <a href="edit_post.php?id=<?php echo $post['post_id']; ?>" class="btn btn-primary btn-sm">Edit</a>
                                     <a href="delete_post.php?id=<?php echo $post['post_id']; ?>" class="btn btn-danger btn-sm" 

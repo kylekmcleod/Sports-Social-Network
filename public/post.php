@@ -79,6 +79,9 @@ if (isset($_SESSION['user_id'])) {
             <div class="post__publish-time"><?= formatTimeAgo($post['created_at']) ?></div>
           </div>
           <div class="post__content"><?= htmlspecialchars($post['content']) ?></div>
+          <div class="post__timestamp">
+            <?= date('M d, Y h:i A', strtotime($post['created_at'])) ?>
+          </div>
         </div>
       </div>
 
@@ -117,6 +120,9 @@ if (isset($_SESSION['user_id'])) {
                 <div class="post__publish-time"><?= formatTimeAgo($comment['created_at']) ?></div>
               </div>
               <div class="post__content"><?= htmlspecialchars($comment['content']) ?></div>
+              <div class="post__timestamp">
+                <?= date('M d, Y h:i A', strtotime($comment['created_at'])) ?>
+              </div>
             </div>
           </div>
         <?php endforeach; ?>

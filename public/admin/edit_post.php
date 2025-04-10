@@ -105,7 +105,7 @@ if ($post_id > 0) {
                     
                     <div class="mb-3">
                         <label class="form-label">Posted On</label>
-                        <input type="text" class="form-control" value="<?php echo date('M d, Y H:i', strtotime($post['created_at'])); ?>" readonly>
+                        <input type="text" class="form-control" value="<?php echo date('M d, Y h:i A', strtotime($post['created_at'])); ?>" readonly>
                     </div>
                     
                     <div class="mb-3">

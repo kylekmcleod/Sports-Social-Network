@@ -86,9 +86,23 @@
     opacity: 0.9;
 }
 
-
 .post__action-count {
     font-size: 13px;
+}
+
+.post__timestamp {
+    font-size: 0.85rem;
+    color: #657786;
+    text-align: right;
+    margin-top: 0.75rem;
+    width: 100%;
+    display: block;
+    padding-right: 5px;
+}
+
+/* Make timestamp more visible on post hover */
+.post:hover .post__timestamp {
+    color: #1da1f2;
 }
 
 .error-message {
