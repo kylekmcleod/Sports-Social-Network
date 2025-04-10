@@ -20,7 +20,6 @@ class AddCommentControllerTest extends TestCase {
 
         $this->assertStringContainsString('success', $output);
         
-        // Verify comment was added
         $stmt = $this->conn->prepare("SELECT content FROM comments WHERE content = ?");
         $stmt->bind_param("s", $_POST['content']);
         $stmt->execute();

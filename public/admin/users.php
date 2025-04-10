@@ -3,13 +3,11 @@ session_start();
 include_once('../../config/config.php');
 include_once('../../src/controllers/auth.php');
 
-// Redirect if not admin
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
     header("Location: ../homepage.php");
     exit();
 }
 
-// Handle search query if present
 $search = isset($_GET['q']) ? trim($_GET['q']) : '';
 $searchCondition = '';
 $searchParams = [];
@@ -19,7 +17,6 @@ if (!empty($search)) {
     $searchParams = ["%$search%", "%$search%"];
 }
 
-// Get users from database
 $query = "SELECT user_id, username, email, first_name, last_name, is_active, is_admin, created_at 
           FROM users 
           $searchCondition 
@@ -54,7 +51,6 @@ $stmt->close();
     <link rel="stylesheet" href="../../assets/css/admin/admin.css" />
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <div class="header__content">
             <div class="header__search-container">
@@ -71,12 +67,10 @@ $stmt->close();
     <div class="layout">
         <?php include_once('../../assets/components/admin/leftSideBar.php'); ?>
         
-        <!-- Main content -->
         <div class="layout__main">
             <h1 class="admin-panel__header">User Management</h1>
             
             <?php
-            // Display success/error messages if they exist
             if (isset($_GET['success'])) {
                 echo '<div class="alert alert-success">';
                 if ($_GET['success'] == 'userdeleted') echo 'User deleted successfully.';
