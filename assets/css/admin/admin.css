@@ -3,6 +3,8 @@
     font-size: 2rem;
     font-weight: 700;
     color: #333;
+    text-align: center;
+    margin-top: px;
 }
 
 .admin-panel {
@@ -13,6 +15,14 @@
 }
 
 .admin-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.admin-card-big {
     background-color: #fff;
     border-radius: 8px;
     padding: 1.5rem;
@@ -119,6 +129,7 @@
 
 .card-title {
     font-weight: 600;
+    font-size: 1rem;
 }
 
 .display-6 {

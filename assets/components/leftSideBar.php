@@ -16,10 +16,6 @@ include_once('../src/controllers/auth.php');
         <?php
         if (checkIfLoggedIn()) {
             ?>
-            <a href="" class="sidebar-menu__item">
-                <img src="../assets/svg/notifications.svg" class="sidebar-menu__item-icon" />
-                <span>Notifications</span>
-            </a>
             <a href="profile.php" class="sidebar-menu__item">
                 <img src="../assets/svg/profile.svg" class="sidebar-menu__item-icon" />
                 <span>Profile</span>

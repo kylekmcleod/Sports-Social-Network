@@ -95,7 +95,7 @@ if ($checkTable->num_rows > 0) {
         <div class="layout__main">
             <h1 class="admin-panel__header">Admin Dashboard</h1>
             
-            <div class="admin-card mb-4">
+            <div class="admin-card-big mb-4">
                 <h4 class="card-title mb-3">Quick Summary</h4>
                 <div class="row">
                     <div class="col-md-3 mb-3">
@@ -126,7 +126,7 @@ if ($checkTable->num_rows > 0) {
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
-                        <div class="card bg-warning text-dark">
+                        <div class="card bg-danger text-white">
                             <div class="card-body">
                                 <h5 class="card-title">Likes</h5>
                                 <p class="card-text display-6"><?php echo $dashboardData['likes']; ?></p>
