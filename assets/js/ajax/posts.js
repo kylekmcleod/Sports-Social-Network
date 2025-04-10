@@ -85,11 +85,11 @@ function fetchAndDisplayPosts() {
                         <div class="post__actions">
                             <div class="post__action-button">
                                 <img src="../assets/svg/comment.svg" class="post__action-icon" />
-                                <span class="post__action-count">24</span>
+                                <span class="post__action-count">0</span>
                             </div>
                             <div class="post__action-button">
                                 <img src="../assets/svg/heart.svg" class="post__action-icon" />
-                                <span class="post__action-count">482</span>
+                                <span class="post__action-count">0</span>
                             </div>
                         </div>
                     </div>
