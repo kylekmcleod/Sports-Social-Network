@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('../config/config.php');
 ?>
 
 <!DOCTYPE html>
@@ -42,48 +43,58 @@ session_start();
     include_once('../assets/components/leftSideBar.php');
     ?>
 
-    <!-- Main content -->
-    <div class="layout__main">
-      <?php
-      if (checkIfLoggedIn()) {
-      ?>
-        <form class="post-something" method="POST" action="../src/controllers/AddPostController.php">
-          <img class="post-something__author-logo" src="../assets/images/profile-image-1.jpg" alt="Author Logo" />
-          <div class="post-something__content">
-            <textarea
-              class="post-something__input"
-              placeholder="What's happening in sports?"
-              maxlength="280"
-              name="content"></textarea>
-            <div class="post-something__tags">
-              <div class="post-something__tags-container">
-                <button type="button" class="tag-button" data-value="football">Football</button>
-                <button type="button" class="tag-button" data-value="basketball">Basketball</button>
-                <button type="button" class="tag-button" data-value="soccer">Soccer</button>
-                <button type="button" class="tag-button" data-value="tennis">Tennis</button>
-                <button type="button" class="tag-button" data-value="baseball">Baseball</button>
-                <button type="button" class="tag-button" data-value="hockey">Hockey</button>
+        <!-- Main content -->
+        <div class="layout__main">
+        <?php
+        if(checkIfLoggedIn()) {
+            $userProfilePic = '../assets/images/defaultProfilePic.png';
+            if (isset($_SESSION['user_id'])) {
+                $stmt = $conn->prepare("SELECT profile_picture FROM users WHERE user_id = ?");
+                $stmt->bind_param("i", $_SESSION['user_id']);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if ($row = $result->fetch_assoc()) {
+                    $userProfilePic = $row['profile_picture'] ? '../src/utils/getImage.php?file=' . $row['profile_picture'] : '../assets/images/defaultProfilePic.png';
+                }
+            }
+        ?>
+          <form class="post-something" method="POST" action="../src/controllers/AddPostController.php">
+            <img class="post-something__author-logo" src="<?php echo $userProfilePic; ?>" alt="Author Logo" />
+            <div class="post-something__content">
+              <textarea 
+                class="post-something__input" 
+                placeholder="What's happening in sports?"
+                maxlength="280"
+                name="content"
+              ></textarea>
+              <div class="post-something__tags">
+                <div class="post-something__tags-container">
+                  <button type="button" class="tag-button" data-value="football">Football</button>
+                  <button type="button" class="tag-button" data-value="basketball">Basketball</button>
+                  <button type="button" class="tag-button" data-value="soccer">Soccer</button>
+                  <button type="button" class="tag-button" data-value="tennis">Tennis</button>
+                  <button type="button" class="tag-button" data-value="baseball">Baseball</button>
+                  <button type="button" class="tag-button" data-value="hockey">Hockey</button>
+                </div>
+                <input type="hidden" name="tags[]" id="selected-tags" value="">
               </div>
-              <input type="hidden" name="tags[]" id="selected-tags" value="">
+              <div class="post-something__actions">
+                <span class="post-something__char-count">280</span>
+                <button type="submit" class="post-something__button">Post</button>
+              </div>
             </div>
-            <div class="post-something__actions">
-              <span class="post-something__char-count">280</span>
-              <button type="submit" class="post-something__button">Post</button>
-            </div>
-          </div>
-        </form>
-      <?php
-      } else {
-      ?>
+          </form>
+        <?php
+        } else {
+        ?>
         <div class="post-something__login-container">
           <p class="post-something__login-message">You must be logged in to post something.</p>
           <button class="post-something__login-button" onclick="window.location.href='login.php'">Login</button>
-        </div>
-      <?php
-      }
-      ?>
-
-
+          </div>
+        <?php
+        }
+        ?>
+        
       <!-- posts container -->
       <div id="posts-container"></div>
     </div>

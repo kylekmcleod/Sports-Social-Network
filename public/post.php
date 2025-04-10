@@ -16,6 +16,17 @@ if (!$post) {
   header('Location: homepage.php');
   exit;
 }
+
+$userProfilePic = '../assets/images/defaultProfilePic.png';
+if (isset($_SESSION['user_id'])) {
+    $stmt = $conn->prepare("SELECT profile_picture FROM users WHERE user_id = ?");
+    $stmt->bind_param("i", $_SESSION['user_id']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($row = $result->fetch_assoc()) {
+        $userProfilePic = $row['profile_picture'] ? '../src/utils/getImage.php?file=' . $row['profile_picture'] : '../assets/images/defaultProfilePic.png';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -74,22 +85,23 @@ if (!$post) {
       <!-- Comment Form -->
       <?php if (isset($_SESSION['user_id'])): ?>
         <div class="post-something">
-          <img class="post-something__author-logo" src="../assets/images/defaultProfilePic.png" />
-          <div class="post-something__content">
-            <form action="../src/controllers/AddCommentController.php" method="POST" class="post-something__form">
-              <textarea
-                class="post-something__input"
-                placeholder="Post a reply..."
-                name="content"
-                maxlength="280"
-                required></textarea>
-              <input type="hidden" name="post_id" value="<?= $post_id ?>">
-              <div class="post-something__actions">
-                <span class="post-something__char-count">280</span>
-                <button type="submit" class="post-something__button">Reply</button>
-              </div>
-            </form>
-          </div>
+            <img class="post-something__author-logo" src="<?= $userProfilePic ?>" />
+            <div class="post-something__content">
+                <form action="../src/controllers/AddCommentController.php" method="POST" class="post-something__form">
+                    <textarea 
+                        class="post-something__input" 
+                        placeholder="Post a reply..."
+                        name="content"
+                        maxlength="280"
+                        required
+                    ></textarea>
+                    <input type="hidden" name="post_id" value="<?= $post_id ?>">
+                    <div class="post-something__actions">
+                        <span class="post-something__char-count">280</span>
+                        <button type="submit" class="post-something__button">Reply</button>
+                    </div>
+                </form>
+            </div>
         </div>
       <?php endif; ?>
 
