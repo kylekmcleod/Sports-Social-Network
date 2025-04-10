@@ -5,7 +5,6 @@ function getTrendingTags() {
     global $conn;
     
     try {
-        // SQL query to split tags and count their occurrences
         $query = "
             SELECT TRIM(tag) as tag, COUNT(*) as count 
             FROM (
@@ -39,7 +38,6 @@ function getTrendingTags() {
             ];
         }
 
-        // If this is an AJAX request, return JSON
         if (isset($_GET['ajax'])) {
             header('Content-Type: application/json');
             echo json_encode($trending);
@@ -57,7 +55,6 @@ function getTrendingTags() {
     }
 }
 
-// Handle direct requests to this file
 if ($_SERVER['SCRIPT_NAME'] === __FILE__) {
     getTrendingTags();
 }

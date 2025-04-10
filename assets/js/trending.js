@@ -1,4 +1,4 @@
-sfunction updateTrendingTags() {
+function updateTrendingTags() {
     fetch('../src/controllers/trendingController.php?ajax=1')
         .then(response => {
             if (!response.ok) {
@@ -15,7 +15,6 @@ sfunction updateTrendingTags() {
             const container = document.querySelector('.trends-for-you');
             if (!container) return;
 
-            // Keep the header
             const header = container.querySelector('.trends-for-you__block:first-child');
             container.innerHTML = '';
             container.appendChild(header);
@@ -48,7 +47,7 @@ sfunction updateTrendingTags() {
         });
 }
 
-// Update trending tags immediately and then every minute
+
 document.addEventListener('DOMContentLoaded', () => {
     updateTrendingTags();
     setInterval(updateTrendingTags, 60000);
