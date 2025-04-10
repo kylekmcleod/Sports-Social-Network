@@ -45,63 +45,18 @@ function fetchAndDisplayPosts() {
             
             posts.forEach(function (post) {
                 existingPostIds.add(post.id);
-
                 const postElement = document.createElement('div');
-                postElement.classList.add('post');
-                postElement.dataset.postId = post.id;
-
-                const profilePicSrc = post.profile_picture
-                    ? `../src/utils/getImage.php?file=${post.profile_picture}`
-                    : '../assets/images/defaultProfilePic.png';
-
-                postElement.innerHTML = `
-                    <img class="post__author-logo" src="${profilePicSrc}" />
-                    <div class="post__main">
-                        <div class="post__header">
-                            <div class="post__author-name">@${post.username}&nbsp;&nbsp;&#8226;</div>
-                            <div class="post__publish-time">
-                                ${(() => {
-                                    const postDate = new Date(post.created_at);
-                                    const currentYear = new Date().getFullYear();
-
-                                    const options = {
-                                        month: 'short',
-                                        day: 'numeric',
-                                        hour: 'numeric',
-                                        minute: 'numeric',
-                                    };
-
-                                    if (postDate.getFullYear() !== currentYear) {
-                                        options.year = 'numeric';
-                                    }
-
-                                    return postDate.toLocaleString('en-US', options);
-                                })()}
-                            </div>
-                        </div>
-                        <div class="post__content">
-                            ${post.content}
-                        </div>
-                        <div class="post__actions">
-                            <div class="post__action-button">
-                                <img src="../assets/svg/comment.svg" class="post__action-icon" />
-                                <span class="post__action-count">24</span>
-                            </div>
-                            <div class="post__action-button">
-                                <img src="../assets/svg/heart.svg" class="post__action-icon" />
-                                <span class="post__action-count">482</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-
+                postElement.innerHTML = renderPost(post);
                 postElement.addEventListener('click', () => {
                     window.location.href = `../public/post.php?id=${post.id}`;
                 });
-
                 postElement.style.cursor = 'pointer';
                 postsContainer.appendChild(postElement);
             });
+
+            if (window.setupCollapsibleThreads) {
+                window.setupCollapsibleThreads();
+            }
         } else {
             console.error('Error fetching posts:', xhr.status, xhr.statusText);
         }
@@ -148,6 +103,79 @@ function showNewPostAlert(count) {
     setTimeout(() => {
         alertElement.style.display = 'none';
     }, 5000);
+}
+
+// Add a new function or modify the existing renderPost function to include collapsible threads
+function renderPost(post) {
+    // Escape HTML characters in user-generated content
+    const safeUsername = escapeHtml(post.username);
+    const safeContent = escapeHtml(post.content);
+    
+    // Create post HTML
+    let postHtml = `
+        <div class="post" data-post-id="${post.id}">
+            <a href="./profile.php?user_id=${post.user_id || ''}">
+                <img class="post__author-logo" src="${post.profile_picture ? '../src/utils/getImage.php?file=' + post.profile_picture : '../assets/images/defaultProfilePic.png'}" />
+            </a>
+            <div class="post__main">
+                <div class="post__header">
+                    <a href="./profile.php?user_id=${post.user_id || ''}" class="post__author-link">
+                        <div class="post__author-name">${safeUsername}</div>
+                    </a>
+                    <div class="post__author-slug">@${safeUsername.toLowerCase().replace(/\s+/g, '_')}</div>
+                    <div class="post__publish-time">${formatTime(post.created_at)}</div>
+                </div>
+                <a href="./post.php?id=${post.id}" class="post__content-link">
+                    <div class="post__content">${safeContent}</div>
+                </a>
+                <div class="post__tags">
+                    ${renderTags(post.tags)}
+                </div>
+                <div class="post__actions">
+                    <div class="post__action">
+                        <img src="../assets/svg/comment.svg" class="post__action-icon" />
+                        <span>${post.comment_count || 0}</span>
+                    </div>
+                    <div class="post__action">
+                        <img src="../assets/svg/like.svg" class="post__action-icon" />
+                        <span>${post.like_count || 0}</span>
+                    </div>
+                </div>`;
+    
+    // Add collapsible thread toggle if post has comments
+    if (post.comment_count && post.comment_count > 0) {
+        postHtml += `
+                <div class="post__thread-toggle" data-post-id="${post.id}">
+                    <span class="thread-arrow"></span>
+                    Show ${post.comment_count} ${post.comment_count === 1 ? 'reply' : 'replies'}
+                </div>
+                <div class="post__thread-container" data-post-id="${post.id}">
+                    <!-- Comments will be loaded here -->
+                </div>`;
+    }
+    
+    postHtml += `
+            </div>
+        </div>`;
+    
+    return postHtml;
+}
+
+// Add or modify the existing function to set up collapsible threads after posts are loaded
+function loadPosts(tags = []) {
+    // ...existing code...
+    
+    // Call setupCollapsibleThreads after posts are rendered
+    if (window.setupCollapsibleThreads) {
+        window.setupCollapsibleThreads();
+    }
+}
+
+// Helper function to escape HTML
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
 }
 
     fetchAndDisplayPosts();

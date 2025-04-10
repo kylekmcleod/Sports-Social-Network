@@ -8,57 +8,55 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['is_admin']) || $_SESSION['
     exit();
 }
 
-$post_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+// Get dashboard summary data
+$dashboardData = [];
 
-// Handle form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $content = trim($_POST['content']);
-    $post_id = (int)$_POST['post_id'];
+// Total users
+$query = "SELECT COUNT(*) as count FROM users";
+$result = $conn->query($query);
+$dashboardData['users'] = $result->fetch_assoc()['count'];
+
+// New users in the last 7 days
+$query = "SELECT COUNT(*) as count FROM users WHERE created_at >= DATE_SUB(NOW(), INTERVAL 7 DAY)";
+$result = $conn->query($query);
+$dashboardData['new_users'] = $result->fetch_assoc()['count'];
+
+// Total posts
+$query = "SELECT COUNT(*) as count FROM posts";
+$result = $conn->query($query);
+$dashboardData['posts'] = $result->fetch_assoc()['count'];
+
+// New posts in the last 7 days
+$query = "SELECT COUNT(*) as count FROM posts WHERE created_at >= DATE_SUB(NOW(), INTERVAL 7 DAY)";
+$result = $conn->query($query);
+$dashboardData['new_posts'] = $result->fetch_assoc()['count'];
+
+// Total comments (if table exists)
+$dashboardData['comments'] = 0;
+$dashboardData['new_comments'] = 0;
+$checkTable = $conn->query("SHOW TABLES LIKE 'comments'");
+if ($checkTable->num_rows > 0) {
+    $query = "SELECT COUNT(*) as count FROM comments";
+    $result = $conn->query($query);
+    $dashboardData['comments'] = $result->fetch_assoc()['count'];
     
-    if (empty($content)) {
-        $error = "Post content cannot be empty.";
-    } else {
-        try {
-            $stmt = $conn->prepare("UPDATE posts SET content = ? WHERE post_id = ?");
-            $stmt->bind_param("si", $content, $post_id);
-            $stmt->execute();
-            
-            if ($stmt->affected_rows > 0) {
-                header("Location: posts.php?success=postupdated");
-                exit();
-            } else {
-                $error = "No changes made or post not found.";
-            }
-            $stmt->close();
-        } catch (Exception $e) {
-            error_log("Edit post error: " . $e->getMessage());
-            $error = "Database error occurred.";
-        }
-    }
+    $query = "SELECT COUNT(*) as count FROM comments WHERE created_at >= DATE_SUB(NOW(), INTERVAL 7 DAY)";
+    $result = $conn->query($query);
+    $dashboardData['new_comments'] = $result->fetch_assoc()['count'];
 }
 
-// Get post data
-if ($post_id > 0) {
-    $stmt = $conn->prepare("
-        SELECT p.post_id, p.user_id, p.content, p.created_at, u.username 
-        FROM posts p 
-        LEFT JOIN users u ON p.user_id = u.user_id 
-        WHERE p.post_id = ?
-    ");
-    $stmt->bind_param("i", $post_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
+// Total likes (if table exists)
+$dashboardData['likes'] = 0;
+$dashboardData['new_likes'] = 0;
+$checkTable = $conn->query("SHOW TABLES LIKE 'likes'");
+if ($checkTable->num_rows > 0) {
+    $query = "SELECT COUNT(*) as count FROM likes";
+    $result = $conn->query($query);
+    $dashboardData['likes'] = $result->fetch_assoc()['count'];
     
-    if ($result->num_rows === 0) {
-        header("Location: posts.php?error=notfound");
-        exit();
-    }
-    
-    $post = $result->fetch_assoc();
-    $stmt->close();
-} else {
-    header("Location: posts.php?error=missingid");
-    exit();
+    $query = "SELECT COUNT(*) as count FROM likes WHERE created_at >= DATE_SUB(NOW(), INTERVAL 7 DAY)";
+    $result = $conn->query($query);
+    $dashboardData['new_likes'] = $result->fetch_assoc()['count'];
 }
 ?>
 
@@ -66,7 +64,7 @@ if ($post_id > 0) {
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Post - Sport Page</title>
+    <title>Admin Dashboard - Sport Page</title>
     <link rel="stylesheet" href="../../assets/css/globals.css" />
     <link rel="stylesheet" href="../../assets/css/homepage/brand.css" />
     <link rel="stylesheet" href="../../assets/css/homepage/layout.css" />
@@ -79,47 +77,181 @@ if ($post_id > 0) {
     <!-- Header -->
     <header class="header">
         <div class="header__content">
-            <h4 class="m-0">Edit Post #<?php echo $post_id; ?></h4>
+            <div class="header__search-container">
+                <form action="search.php" method="GET">
+                    <input type="text" name="q" class="header__search-input" placeholder="Search users or posts..." />
+                    <button type="submit" class="header__search-button">
+                        <img src="../../assets/svg/search.svg" class="header__search-icon" alt="Search" />
+                    </button>
+                </form>
+            </div>
         </div>
     </header>
 
     <div class="layout">
-        <?php include_once('../../assets/components/leftSideBar.php'); ?>
+        <?php include_once('../../assets/components/admin/leftSideBar.php'); ?>
         
         <!-- Main content -->
         <div class="layout__main">
-            <h1 class="admin-panel__header">Edit Post</h1>
+            <h1 class="admin-panel__header">Admin Dashboard</h1>
             
-            <?php if (isset($error)): ?>
-            <div class="alert alert-danger"><?php echo $error; ?></div>
-            <?php endif; ?>
+            <div class="admin-card mb-4">
+                <h4 class="card-title mb-3">Quick Summary</h4>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <div class="card bg-primary text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Users</h5>
+                                <p class="card-text display-6"><?php echo $dashboardData['users']; ?></p>
+                                <p class="card-text">New (7d): <?php echo $dashboardData['new_users']; ?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card bg-success text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Posts</h5>
+                                <p class="card-text display-6"><?php echo $dashboardData['posts']; ?></p>
+                                <p class="card-text">New (7d): <?php echo $dashboardData['new_posts']; ?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card bg-info text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Comments</h5>
+                                <p class="card-text display-6"><?php echo $dashboardData['comments']; ?></p>
+                                <p class="card-text">New (7d): <?php echo $dashboardData['new_comments']; ?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card bg-warning text-dark">
+                            <div class="card-body">
+                                <h5 class="card-title">Likes</h5>
+                                <p class="card-text display-6"><?php echo $dashboardData['likes']; ?></p>
+                                <p class="card-text">New (7d): <?php echo $dashboardData['new_likes']; ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="admin-card mb-4">
+                <h4 class="card-title mb-3">Admin Actions</h4>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">User Management</h5>
+                                <p class="card-text">View, edit, and manage user accounts.</p>
+                                <a href="users.php" class="btn btn-primary">Manage Users</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Post Management</h5>
+                                <p class="card-text">Review, edit, and moderate content.</p>
+                                <a href="posts.php" class="btn btn-primary">Manage Posts</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Usage Reports</h5>
+                                <p class="card-text">View detailed site activity reports.</p>
+                                <a href="reports.php" class="btn btn-primary">View Reports</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
             <div class="admin-card">
-                <form method="POST" action="edit_post.php">
-                    <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
-                    
-                    <div class="mb-3">
-                        <label class="form-label">Posted By</label>
-                        <input type="text" class="form-control" value="<?php echo htmlspecialchars($post['username']); ?>" readonly>
+                <h4 class="card-title mb-3">Recent Activity</h4>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="card">
+                            <div class="card-header">
+                                New Users (Last 5)
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Username</th>
+                                                <th>Joined</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                            $query = "SELECT user_id, username, created_at FROM users ORDER BY created_at DESC LIMIT 5";
+                                            $result = $conn->query($query);
+                                            
+                                            if ($result->num_rows > 0) {
+                                                while ($row = $result->fetch_assoc()) {
+                                                    echo '<tr>';
+                                                    echo '<td>' . htmlspecialchars($row['username']) . '</td>';
+                                                    echo '<td>' . date('M d, Y', strtotime($row['created_at'])) . '</td>';
+                                                    echo '<td><a href="user_posts.php?user_id=' . $row['user_id'] . '" class="btn btn-sm btn-info">View</a></td>';
+                                                    echo '</tr>';
+                                                }
+                                            } else {
+                                                echo '<tr><td colspan="3" class="text-center">No users found</td></tr>';
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="mb-3">
-                        <label class="form-label">Posted On</label>
-                        <input type="text" class="form-control" value="<?php echo date('M d, Y H:i', strtotime($post['created_at'])); ?>" readonly>
+                    <div class="col-md-6 mb-3">
+                        <div class="card">
+                            <div class="card-header">
+                                Recent Posts (Last 5)
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Content</th>
+                                                <th>Posted</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                            $query = "SELECT p.post_id, p.content, p.created_at 
+                                                      FROM posts p 
+                                                      ORDER BY p.created_at DESC LIMIT 5";
+                                            $result = $conn->query($query);
+                                            
+                                            if ($result->num_rows > 0) {
+                                                while ($row = $result->fetch_assoc()) {
+                                                    echo '<tr>';
+                                                    echo '<td>' . htmlspecialchars(substr($row['content'], 0, 30)) . '...</td>';
+                                                    echo '<td>' . date('M d, Y', strtotime($row['created_at'])) . '</td>';
+                                                    echo '<td><a href="edit_post.php?id=' . $row['post_id'] . '" class="btn btn-sm btn-info">Edit</a></td>';
+                                                    echo '</tr>';
+                                                }
+                                            } else {
+                                                echo '<tr><td colspan="3" class="text-center">No posts found</td></tr>';
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="mb-3">
-                        <label for="content" class="form-label">Content</label>
-                        <textarea class="form-control" id="content" name="content" rows="5" required><?php echo htmlspecialchars($post['content']); ?></textarea>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
-                        <a href="posts.php" class="btn btn-secondary">Cancel</a>
-                        <a href="delete_post.php?id=<?php echo $post['post_id']; ?>" class="btn btn-danger" 
-                           onclick="return confirm('Are you sure you want to delete this post?')">Delete Post</a>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
