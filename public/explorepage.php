@@ -6,44 +6,22 @@ $trendingTags = getTrendingTags();
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sport Page</title>
-    <link rel="stylesheet" href="../assets/css/globals.css" />
-    <link rel="stylesheet" href="../assets/css/homepage/brand.css" />
-    <link rel="stylesheet" href="../assets/css/homepage/layout.css" />
-    <link rel="stylesheet" href="../assets/css/nav/sidebar-menu.css" />
-    <link rel="stylesheet" href="../assets/css/homepage/trends-for-you.css" />
-    <link rel="stylesheet" href="../assets/css/homepage/post.css" />
-    <link rel="stylesheet" href="../assets/css/homepage/postSomething.css" />
-    <link rel="stylesheet" href="../assets/css/homepage/who-to-follow.css" />
-    <link rel="stylesheet" href="../assets/css/homepage/header.css" />
-    <link rel="stylesheet" href="../assets/css/homepage/sports-scores.css" />
-    <link rel="stylesheet" href="../assets/css/explore/explore.css" />
-  </head>
-  <body>
-    <!-- Header -->
-    <header class="header">
-      <div class="header__content">
-        <div class="header__search-container">
-          <input 
-            type="text" 
-            class="header__search-input" 
-            placeholder="Search..."
-          />
-        <img 
-            src="../assets/svg/search.svg" 
-            class="header__search-icon" 
-            alt="Search"
-        />
-        </div>
-      </div>
-    </header>
 
-    <div class="layout">
-      <?php
-        include_once('../assets/components/leftSideBar.php');
-      ?>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sport Page</title>
+  <link rel="stylesheet" href="../assets/css/globals.css" />
+  <link rel="stylesheet" href="../assets/css/homepage/brand.css" />
+  <link rel="stylesheet" href="../assets/css/homepage/layout.css" />
+  <link rel="stylesheet" href="../assets/css/nav/sidebar-menu.css" />
+  <link rel="stylesheet" href="../assets/css/homepage/trends-for-you.css" />
+  <link rel="stylesheet" href="../assets/css/homepage/post.css" />
+  <link rel="stylesheet" href="../assets/css/homepage/postSomething.css" />
+  <link rel="stylesheet" href="../assets/css/homepage/who-to-follow.css" />
+  <link rel="stylesheet" href="../assets/css/homepage/header.css" />
+  <link rel="stylesheet" href="../assets/css/homepage/sports-scores.css" />
+  <link rel="stylesheet" href="../assets/css/explore/explore.css" />
+</head>
 
         <!-- Main content -->
     <div class="layout__main">
@@ -191,10 +169,11 @@ $trendingTags = getTrendingTags();
         </div>
       </div>
     </div>
+  </header>
 
-    <!-- Mobile nav without logo -->
+  <div class="layout">
     <?php
-      include_once('../assets/components/mobileNav.php');
+    include_once('../assets/components/leftSideBar.php');
     ?>
     <script src="../assets/js/postSomething.js"></script>
     <script src="../assets/js/ajax/addPost.js"></script>
