@@ -1,7 +1,5 @@
 <?php
 session_start();
-require_once('../src/controllers/trendingController.php');
-$trendingTags = getTrendingTags();
 ?>
 
 <!DOCTYPE html>
@@ -23,150 +21,19 @@ $trendingTags = getTrendingTags();
   <link rel="stylesheet" href="../assets/css/explore/explore.css" />
 </head>
 
-        <!-- Main content -->
-    <div class="layout__main">
-        <div class="explore-tags">
-            <h2 class="explore-tags__heading">Explore posts by tag</h2>
-            <div class="explore-tags__container">
-                <button type="button" class="tag-filter-button" data-value="football">Football</button>
-                <button type="button" class="tag-filter-button" data-value="basketball">Basketball</button>
-                <button type="button" class="tag-filter-button" data-value="soccer">Soccer</button>
-                <button type="button" class="tag-filter-button" data-value="tennis">Tennis</button>
-                <button type="button" class="tag-filter-button" data-value="baseball">Baseball</button>
-                <button type="button" class="tag-filter-button" data-value="hockey">Hockey</button>
-            </div>
-        </div>
-        <div id="posts-container"></div>
-    </div>
-
-      <!-- Right sidebar -->
-      <div class="layout__right-sidebar-container">
-        <div class="layout__right-sidebar">
-          <div class="who-to-follow">
-            <div class="who-to-follow__block">
-              <div class="who-to-follow__heading">
-                Who to follow
-              </div>
-            </div>
-            
-            <div class="who-to-follow__block">
-              <img
-                class="who-to-follow__author-logo"
-                src="../assets/images/profile-image-1.jpg"
-              />
-              <div class="who-to-follow__content">
-                <div>
-                  <div class="who-to-follow__author-name">
-                    Sports Dude 23
-                  </div>
-                  <div class="who-to-follow__author-slug">
-                    @messilover23
-                  </div>
-                </div>
-                <div class="who-to-follow__button">
-                  +
-                </div>
-              </div>
-            </div>
-            <div class="who-to-follow__block">
-              <img
-                class="who-to-follow__author-logo"
-                src="../assets/images/profile-image-2.jpg"
-              />
-              <div class="who-to-follow__content">
-                <div>
-                  <div class="who-to-follow__author-name">
-                    Connor McDavid
-                  </div>
-                  <div class="who-to-follow__author-slug">
-                    @connormcdavid
-                  </div>
-                </div>
-                <div class="who-to-follow__button">
-                  +
-                </div>
-              </div>
-            </div>
-
-            <div class="who-to-follow__block">
-              <img
-                class="who-to-follow__author-logo"
-                src="../assets/images/profile-image-3.jpg"
-              />
-              <div class="who-to-follow__content">
-                <div>
-                  <div class="who-to-follow__author-name">
-                    LaMelo Ball
-                  </div>
-                  <div class="who-to-follow__author-slug">
-                    @melo
-                  </div>
-                </div>
-                <div class="who-to-follow__button">
-                  +
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="trends-for-you">
-            <div class="trends-for-you__block">
-              <div class="trends-for-you__heading">
-                Trending
-              </div>
-            </div>
-            <?php foreach ($trendingTags as $index => $tag): ?>
-            <div class="trends-for-you__block">
-              <div class="trends-for-you__meta-information">
-                <?php echo $index === 0 ? 'Most Popular' : "#" . ($index + 1) . " Trending"; ?>
-              </div>
-              <div class="trends-for-you__trend-name">
-                #<?php echo htmlspecialchars($tag['tag']); ?>
-              </div>
-              <div class="trends-for-you__meta-information">
-                <?php echo htmlspecialchars($tag['count']); ?> posts
-              </div>
-            </div>
-            <?php endforeach; ?>
-          </div>
-
-          <div class="sports-scores">
-            <div class="sports-scores__block">
-              <div class="sports-scores__heading">
-                Live Scores
-              </div>
-            </div>
-            
-            <div class="sports-scores__block">
-              <div class="sports-scores__league">NBA</div>
-              <div class="sports-scores__game">
-                <div class="sports-scores__team">
-                  <span class="sports-scores__team-name">LAL</span>
-                  <span class="sports-scores__team-score">112</span>
-                </div>
-                <div class="sports-scores__team">
-                  <span class="sports-scores__team-name">GSW</span>
-                  <span class="sports-scores__team-score">104</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="sports-scores__block">
-              <div class="sports-scores__league">NHL</div>
-              <div class="sports-scores__game">
-                <div class="sports-scores__team">
-                  <span class="sports-scores__team-name">TOR</span>
-                  <span class="sports-scores__team-score">3</span>
-                </div>
-                <div class="sports-scores__team">
-                  <span class="sports-scores__team-name">MTL</span>
-                  <span class="sports-scores__team-score">2</span>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header__content">
+      <div class="header__search-container">
+        <input
+          type="text"
+          class="header__search-input"
+          placeholder="Search..." />
+        <img
+          src="../assets/svg/search.svg"
+          class="header__search-icon"
+          alt="Search" />
       </div>
     </div>
   </header>
@@ -175,9 +42,36 @@ $trendingTags = getTrendingTags();
     <?php
     include_once('../assets/components/leftSideBar.php');
     ?>
-    <script src="../assets/js/postSomething.js"></script>
-    <script src="../assets/js/ajax/addPost.js"></script>
-    <script src="../assets/js/explorePage.js"></script>
-    <script src="../assets/js/trending.js"></script>
-  </body>
+
+    <!-- Main content -->
+    <div class="layout__main">
+      <div class="explore-tags">
+        <h2 class="explore-tags__heading">Explore posts by tag</h2>
+        <div class="explore-tags__container">
+          <button type="button" class="tag-filter-button" data-value="football">Football</button>
+          <button type="button" class="tag-filter-button" data-value="basketball">Basketball</button>
+          <button type="button" class="tag-filter-button" data-value="soccer">Soccer</button>
+          <button type="button" class="tag-filter-button" data-value="tennis">Tennis</button>
+          <button type="button" class="tag-filter-button" data-value="baseball">Baseball</button>
+          <button type="button" class="tag-filter-button" data-value="hockey">Hockey</button>
+        </div>
+      </div>
+      <div id="posts-container"></div>
+    </div>
+
+    <!-- Right sidebar -->
+    <?php
+    include_once('../assets/components/rightSideBar.php');
+    ?>
+  </div>
+
+  <!-- Mobile nav without logo -->
+  <?php
+  include_once('../assets/components/mobileNav.php');
+  ?>
+
+  <script src="../assets/js/postSomething.js"></script>
+  <script src="../assets/js/ajax/addPost.js"></script>
+  <script src="../assets/js/explorePage.js"></script>
+</body>
 </html>
