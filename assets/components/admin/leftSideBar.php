@@ -32,7 +32,7 @@ include_once('../../src/controllers/auth.php');
             <img src="/COSC360/assets/svg/setting.svg" class="sidebar-menu__item-icon" />
             <span>Settings</span>
         </a>
-        <a href="/COSC360/src/controllers/auth.php?logout=true" class="sidebar-menu__item">
+        <a href="../logout.php" class="sidebar-menu__item">
             <img src="/COSC360/assets/svg/logout.svg" class="sidebar-menu__item-icon" />
             <span>Logout</span>
         </a>
