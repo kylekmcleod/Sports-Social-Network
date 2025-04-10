@@ -1,6 +1,10 @@
 <?php
 session_start();
 require_once('../config/config.php');
+require_once('../src/controllers/trendingController.php');
+
+
+$trendingTags = getTrendingTags();
 ?>
 
 <!DOCTYPE html>
@@ -175,40 +179,21 @@ require_once('../config/config.php');
                 Trending
               </div>
             </div>
+            <?php foreach ($trendingTags as $index => $tag): ?>
             <div class="trends-for-you__block">
               <div class="trends-for-you__meta-information">
-                NBA Trending
+                <?php echo $index === 0 ? 'Most Popular' : "#" . ($index + 1) . " Trending"; ?>
               </div>
               <div class="trends-for-you__trend-name">
-                #LeBron
+                #<?php echo htmlspecialchars($tag['tag']); ?>
               </div>
               <div class="trends-for-you__meta-information">
-                23k posts
+                <?php echo htmlspecialchars($tag['count']); ?> posts
               </div>
             </div>
-            <div class="trends-for-you__block">
-              <div class="trends-for-you__meta-information">
-                NHL Trending
-              </div>
-              <div class="trends-for-you__trend-name">
-                #CanadaVsUSA
-              </div>
-              <div class="trends-for-you__meta-information">
-                43k posts
-              </div>
-            </div>
-            <div class="trends-for-you__block">
-              <div class="trends-for-you__meta-information">
-                NFL Trending
-              </div>
-              <div class="trends-for-you__trend-name">
-                #eagles
-              </div>
-              <div class="trends-for-you__meta-information">
-                12k posts
-              </div>
-            </div>
+            <?php endforeach; ?>
           </div>
+          
           <div class="sports-scores">
             <div class="sports-scores__block">
               <div class="sports-scores__heading">
@@ -256,5 +241,6 @@ require_once('../config/config.php');
     <script src="../assets/js/postSomething.js"></script>
     <script src="../assets/js/ajax/posts.js"></script>
     <script src="../assets/js/ajax/addPost.js"></script>
+    <script src="../assets/js/trending.js"></script>
   </body>
 </html>
