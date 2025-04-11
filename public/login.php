@@ -30,7 +30,7 @@
 
             <!-- Login Form Section -->
             <div class="col-12 col-md-6">
-                <form action="/COSC360/src/controllers/LoginAuthController.php" id="loginForm" method="POST">
+                <form action="../src/controllers/LoginAuthController.php" id="loginForm" method="POST">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="text" class="form-control" id="usernameOrEmail" name="usernameOrEmail" required>
