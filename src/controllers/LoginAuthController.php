@@ -22,11 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (password_verify($password, $stored_password_hash)) {
         $_SESSION['user_id'] = $user_id;
         $_SESSION['username'] = $username;
-        $_SESSION['is_admin'] = (bool)$is_admin; // Store admin status in session
+        $_SESSION['is_admin'] = (bool)$is_admin;
         if ($is_admin) {
-            $_SESSION['admin_logged_in'] = true; // Set admin_logged_in session variable
+            $_SESSION['admin_logged_in'] = true;
         }
-        header("Location: /COSC360/public/homepage.php");
+        header("Location: ../../public/homepage.php");
         exit();
     } else {
         echo "Incorrect password.";
